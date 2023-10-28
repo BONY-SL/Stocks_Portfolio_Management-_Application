@@ -31,17 +31,6 @@ public class DatabaseConnection {
         return connection;
     }
 
-    public void closeConnection() {
-        try {
-            if (connection != null) {
-                connection.close();
-                System.out.println("Connection closed.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
 
         DatabaseConnection my=new DatabaseConnection();
