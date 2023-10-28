@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -21,7 +23,14 @@ public class HelloController {
     private Scene MainDashBoardSean;
 
     @FXML
+    private Scene Resetpassword;
+    @FXML
     Parent root;
+
+    @FXML
+    private TextField id;
+    @FXML
+    private PasswordField pwd;
 
     public void loginButton(){
 
@@ -33,6 +42,21 @@ public class HelloController {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         MainDashBoardSean=new Scene(root);
         stage.setScene(MainDashBoardSean);
+    }
+
+    public void clearText(){
+        id.setText("");
+        pwd.setText("");
+    }
+
+    public void gotoPasswordReset(ActionEvent event) throws IOException{
+
+        Parent root= FXMLLoader.load(getClass().getResource("resetPassword.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Resetpassword=new Scene(root);
+        stage.setScene(Resetpassword);
+        stage.setX(450);
+        stage.setY(150);
     }
 
 
