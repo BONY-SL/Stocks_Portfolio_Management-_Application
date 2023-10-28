@@ -31,9 +31,9 @@ public class DatabaseConnection {
         return connection;
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         DatabaseConnection my=new DatabaseConnection();
         my.getConnection();
-    }
+    }*/
 }

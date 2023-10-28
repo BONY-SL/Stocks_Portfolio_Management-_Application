@@ -9,16 +9,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
-public class HelloController {
+public class MainDashboardController {
+
+    @FXML
+    private Label name;
+
+    @FXML
+    private Label Position;
 
     @FXML
     private Stage stage;
 
     @FXML
-    private Scene MainDashBoardSean;
+    private Scene Loginpage;
 
     @FXML
     Parent root;
@@ -27,13 +32,11 @@ public class HelloController {
 
     }
 
-    public void gotoMainDashboard(ActionEvent event) throws IOException{
+    public void gotoLogin(ActionEvent event) throws IOException {
 
-        Parent root= FXMLLoader.load(getClass().getResource("MainDashboard.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        MainDashBoardSean=new Scene(root);
-        stage.setScene(MainDashBoardSean);
+        Loginpage=new Scene(root);
+        stage.setScene(Loginpage);
     }
-
-
 }
