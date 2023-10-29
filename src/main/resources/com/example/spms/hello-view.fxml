@@ -37,7 +37,7 @@
          </font>
       </Text>
       <TextField fx:id="id" layoutX="708.0" layoutY="109.0" prefHeight="26.0" prefWidth="181.0" />
-      <Button layoutX="583.0" layoutY="253.0" mnemonicParsing="false" onAction="#gotoPasswordReset" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" text="Reset">
+      <Button layoutX="561.0" layoutY="253.0" mnemonicParsing="false" onAction="#gotoPasswordReset" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #5eff00;" text="Foget Password">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

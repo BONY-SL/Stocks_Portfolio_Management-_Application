@@ -1,0 +1,5 @@
+#maxLenTextField {
+    -fx-background-color: lightgray;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
