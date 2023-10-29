@@ -47,7 +47,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="799.0" layoutY="253.0" mnemonicParsing="false" onAction="#gotoMainDashboard" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" text="Login">
+      <Button layoutX="799.0" layoutY="253.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" text="Login">
          <font>
             <Font name="Courier New Bold" size="12.0" />
          </font>
