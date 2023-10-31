@@ -17,23 +17,19 @@ import java.util.Optional;
 public class MainDashboardController {
 
     @FXML
-    private Label name;
+    private  static Label name;
 
     @FXML
-    private Label Position;
-
+    private  static Label Position;
     @FXML
     private Stage stage;
 
     @FXML
     private Scene Loginpage;
-
     @FXML
     Parent root;
+    private Scene editProfile;
 
-    public void loginButton(){
-
-    }
 
     public void gotoLogin(ActionEvent event) throws IOException {
 
@@ -52,6 +48,33 @@ public class MainDashboardController {
             stage.setScene(Loginpage);
         } else {
             // ... user chose CANCEL or closed the dialog
+        }
+
+    }
+
+    public void gotoEditProfile(ActionEvent event) throws IOException {
+
+        Parent root= FXMLLoader.load(getClass().getResource("editprofile.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        editProfile=new Scene(root);
+        stage.setScene(editProfile);
+        stage.setX(425);
+        stage.setY(50);
+
+        editprofilecontroller edit=new editprofilecontroller();
+        edit.loadUserData();
+    }
+
+    public void setName_Type(String name,String tp){
+
+        //System.out.println(name);
+        //System.out.println(tp);
+
+        try{
+            this.name.setText(name);
+            this.Position.setText(tp);
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
         }
 
     }

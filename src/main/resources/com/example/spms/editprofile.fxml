@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="500.0" style="-fx-background-color: #a7fc8b;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="500.0" styleClass="opasity" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spms.editprofilecontroller">
    <children>
       <Text layoutX="17.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Profile Details" textAlignment="CENTER" wrappingWidth="465.13671875">
          <font>
@@ -63,7 +67,43 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="310.0" layoutY="586.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="132.0" style="-fx-background-radius: 30;" text="Button" />
-      <Button layoutX="69.0" layoutY="586.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="132.0" style="-fx-background-radius: 30;" text="Button" />
+      <Button layoutX="309.0" layoutY="578.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="150.0" style="-fx-background-radius: 30; -fx-background-color: #3dfc03;" styleClass="title" text="Update">
+         <font>
+            <Font name="Courier New Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="39.0" layoutY="578.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="58.0" prefWidth="150.0" style="-fx-background-radius: 30; -fx-background-color: #3dfc03;">
+         <styleClass>
+            <String fx:value="backimage" />
+            <String fx:value="title" />
+         </styleClass></Button>
+      <Label layoutX="201.0" layoutY="90.0" prefHeight="24.0" prefWidth="258.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="201.0" layoutY="290.0" prefHeight="24.0" prefWidth="258.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="201.0" layoutY="390.0" prefHeight="24.0" prefWidth="258.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="201.0" layoutY="340.0" prefHeight="24.0" prefWidth="258.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField layoutX="201.0" layoutY="140.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <TextField layoutX="201.0" layoutY="190.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <TextField layoutX="201.0" layoutY="240.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <PasswordField layoutX="201.0" layoutY="440.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <PasswordField layoutX="201.0" layoutY="490.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <PasswordField layoutX="201.0" layoutY="540.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <CheckBox layoutX="466.0" layoutY="444.0" mnemonicParsing="false" styleClass="title" />
+      <CheckBox layoutX="466.0" layoutY="494.0" mnemonicParsing="false" styleClass="title" />
+      <CheckBox layoutX="466.0" layoutY="544.0" mnemonicParsing="false" styleClass="title" />
    </children>
 </AnchorPane>

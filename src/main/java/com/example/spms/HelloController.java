@@ -80,7 +80,7 @@ public class HelloController {
                     String username = resalt1.getString(1);
                     String password = resalt1.getString(7);
                     if (userid.equals(username) && userpwd.equals(password)) {
-                        new UserSessionSaved(username,password);
+                        UserSessionSaved.getInstance(username,password);
                         break;
                     }
                     ++count2;

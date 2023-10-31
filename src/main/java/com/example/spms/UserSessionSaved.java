@@ -18,15 +18,15 @@ public final class UserSessionSaved {
 
     private static UserSessionSaved instance;
 
-    UserSessionSaved(String empid, String pwd) {
+    private UserSessionSaved(String empid, String pwd) {
 
         this.employee_id=empid;
         this.password=pwd;
 
-        setEmployeeDetails(empid);
 
         //System.out.println(employee_id);
         //System.out.println(password);
+        setEmployeeDetails(empid);
 
     }
 
@@ -43,6 +43,26 @@ public final class UserSessionSaved {
 
     public static String getEmployee_password(){
         return password;
+    }
+
+    public static String getEmployee_name(){
+        return employee_name;
+    }
+    public static String getEmployee_email(){
+        return email;
+    }
+    public static String getEmployee_contact_number(){
+        return contact_number;
+    }
+    public static String getEmployee_dob(){
+        return dob;
+    }
+    public static String getEmployee_NIC(){
+        return NIC;
+    }
+
+    public static String getEmployee_emptype(){
+        return emptype;
     }
 
     public static void cleanUserSession() {
@@ -75,18 +95,17 @@ public final class UserSessionSaved {
                     emptype=resalt1.getString(5);
                     dob=resalt1.getString(6);
                     NIC=resalt1.getString(8);
-
                     break;
                 }
             }
-            System.out.println(employee_id);
-            System.out.println(employee_name);
-            System.out.println(email);
-            System.out.println(contact_number);
-            System.out.println(emptype);
-            System.out.println(dob);
-            System.out.println(password);
-            System.out.println(NIC);
+            //System.out.println(employee_id);
+            //System.out.println(employee_name);
+            //System.out.println(email);
+            //System.out.println(contact_number);
+            //System.out.println(emptype);
+            //System.out.println(dob);
+            //System.out.println(password);
+            //System.out.println(NIC);
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
