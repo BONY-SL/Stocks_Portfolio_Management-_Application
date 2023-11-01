@@ -17,3 +17,6 @@
 .board{
     -fx-background-color:linear-gradient(to bottom right, #1a6904, #66fd55);
 }
+.board2{
+    -fx-background-color:linear-gradient(to bottom right, #66fd55, #1a6904);
+}

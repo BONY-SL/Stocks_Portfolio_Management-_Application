@@ -6,33 +6,44 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class editprofilecontroller {
-    @FXML
     private  String employee_id;
-    @FXML
+
     private  String password;
-    @FXML
+
     private  String employee_name;
-    @FXML
+
     private  String email;
-    @FXML
+
     private  String contact_number;
-    @FXML
+
     private  String dob;
-    @FXML
+
     private  String NIC;
-    @FXML
+
     private  String emptype;
+
+    @FXML
     private Stage stage;
+    @FXML
     private Scene editProfile;
+    @FXML
     private Scene dashboard;
+
+    @FXML
+    private Label EmployeeID;
 
     public void loadUserData(){
 
+        employee_id=UserSessionSaved.getEmployee_id();
+        EmployeeID=new Label();
+        EmployeeID.setText(employee_id);
+        //System.out.println(EmployeeID.getText());
     }
     
     public void backtoDashboard(ActionEvent event)throws IOException{
