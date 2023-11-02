@@ -81,29 +81,32 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="290.0" prefHeight="24.0" prefWidth="258.0">
+      <Label fx:id="Type" layoutX="201.0" layoutY="290.0" prefHeight="24.0" prefWidth="258.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="390.0" prefHeight="24.0" prefWidth="258.0">
+      <Label fx:id="NICnumber" layoutX="201.0" layoutY="390.0" prefHeight="24.0" prefWidth="258.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="201.0" layoutY="340.0" prefHeight="24.0" prefWidth="258.0">
+      <Label fx:id="BOD" layoutX="201.0" layoutY="340.0" prefHeight="24.0" prefWidth="258.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="201.0" layoutY="140.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
-      <TextField layoutX="201.0" layoutY="190.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
-      <TextField layoutX="201.0" layoutY="240.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
-      <PasswordField layoutX="201.0" layoutY="440.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
-      <PasswordField layoutX="201.0" layoutY="490.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
-      <PasswordField layoutX="201.0" layoutY="540.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
-      <CheckBox layoutX="466.0" layoutY="444.0" mnemonicParsing="false" styleClass="title" />
-      <CheckBox layoutX="466.0" layoutY="494.0" mnemonicParsing="false" styleClass="title" />
-      <CheckBox layoutX="466.0" layoutY="544.0" mnemonicParsing="false" styleClass="title" />
+      <TextField fx:id="Name" layoutX="201.0" layoutY="140.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <TextField fx:id="Email" layoutX="201.0" layoutY="190.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <TextField fx:id="Contact" layoutX="201.0" layoutY="240.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <PasswordField fx:id="CurrentPassword" layoutX="201.0" layoutY="440.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <PasswordField fx:id="NewPassword" layoutX="201.0" layoutY="490.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <PasswordField fx:id="ReEnterNewPassword" layoutX="201.0" layoutY="540.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" />
+      <CheckBox fx:id="showPasswordCheckBox1" layoutX="466.0" layoutY="444.0" mnemonicParsing="false" onAction="#showCurrentPassword" styleClass="title" />
+      <CheckBox fx:id="showPasswordCheckBox2" layoutX="466.0" layoutY="494.0" mnemonicParsing="false" onAction="#showNewPassword" styleClass="title" />
+      <CheckBox fx:id="showPasswordCheckBox3" layoutX="466.0" layoutY="544.0" mnemonicParsing="false" onAction="#showReEnterNewPassword" styleClass="title" />
+      <TextField fx:id="show1" layoutX="201.0" layoutY="440.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" visible="false" />
+      <TextField fx:id="show2" layoutX="201.0" layoutY="490.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" visible="false" />
+      <TextField fx:id="show3" layoutX="201.0" layoutY="540.0" prefHeight="25.0" prefWidth="258.0" styleClass="title" visible="false" />
    </children>
 </AnchorPane>
