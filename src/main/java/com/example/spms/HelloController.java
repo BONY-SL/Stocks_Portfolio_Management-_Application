@@ -113,17 +113,10 @@ public class HelloController {
 
     public void gotoMainDashboard(ActionEvent event) throws IOException{
 
-
         Parent root= FXMLLoader.load(getClass().getResource("MainDashboard.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         MainDashBoardSean=new Scene(root);
         stage.setScene(MainDashBoardSean);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainDashboard.fxml"));
-        root = loader.load();
-
-        MainDashboardController mainDashboardController = loader.getController();
-        mainDashboardController.customInitialization();
 
 
     }

@@ -3,6 +3,7 @@ package com.example.spms;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,8 +11,10 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class editprofilecontroller {
+public class editprofilecontroller implements Initializable {
     private  String employee_id;
 
     private  String password;
@@ -41,7 +44,6 @@ public class editprofilecontroller {
     public void loadUserData(){
 
         employee_id=UserSessionSaved.getEmployee_id();
-        EmployeeID=new Label();
         EmployeeID.setText(employee_id);
         //System.out.println(EmployeeID.getText());
     }
@@ -54,5 +56,10 @@ public class editprofilecontroller {
         stage.setScene(dashboard);
         stage.setX(200);
         stage.setY(100);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadUserData();
     }
 }

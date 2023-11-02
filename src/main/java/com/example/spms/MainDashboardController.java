@@ -19,13 +19,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MainDashboardController implements Initializable {
+public class MainDashboardController implements Initializable{
 
-    @FXML
-    private  Label name;
-
-    @FXML
-    private  Label Position;
     @FXML
     private Stage stage;
 
@@ -48,6 +43,12 @@ public class MainDashboardController implements Initializable {
     private Button ManageFinancial;
     @FXML
     private Button ManageReport;
+
+    @FXML
+    private Label Position;
+
+    @FXML
+    private Label name;
 
     public void gotoLogin(ActionEvent event) throws IOException {
 
@@ -80,58 +81,27 @@ public class MainDashboardController implements Initializable {
         stage.setX(425);
         stage.setY(50);
 
-        editprofilecontroller edit=new editprofilecontroller();
-        edit.loadUserData();
     }
 
-    /*public void setName_Type(){
+    public void setName_Type(){
 
         String Name=UserSessionSaved.getEmployee_name();
         String type=UserSessionSaved.getEmployee_emptype();
 
-        System.out.println(Name);
-        System.out.println(type);
+        //System.out.println(Name);
+        //System.out.println(type);
 
         try{
-            name=new Label();
-            Position=new Label();
             name.setText(Name);
             Position.setText(type);
 
-            System.out.println(name.getText());
-            System.out.println(Position.getText());
+            //System.out.println(name.getText());
+            //System.out.println(Position.getText());
 
         }catch (NullPointerException e){
             System.out.println(e.getMessage());
         }
 
-
-    }*/
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // This is the JavaFX initialize method that is called automatically when FXML components are loaded.
-        // You should not call this manually.
-    }
-
-    public void customInitialization() {
-        // Your custom initialization code goes here.
-        String Name = UserSessionSaved.getEmployee_name();
-        String type = UserSessionSaved.getEmployee_emptype();
-
-        System.out.println(Name);
-        System.out.println(type);
-
-        try {
-            name.setText(Name);
-            Position.setText(type);
-
-            System.out.println(name.getText());
-            System.out.println(Position.getText());
-
-        } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     public void gotoUserModule(ActionEvent event)throws IOException{
@@ -144,5 +114,10 @@ public class MainDashboardController implements Initializable {
             ManageFinancial.setDisable(true);
             ManageReport.setDisable(true);
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setName_Type();
     }
 }
