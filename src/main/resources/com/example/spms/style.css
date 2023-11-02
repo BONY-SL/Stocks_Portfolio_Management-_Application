@@ -1,0 +1,22 @@
+#maxLenTextField {
+    -fx-background-color: lightgray;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+.opasity{
+    -fx-background-color:linear-gradient(to bottom right, #b8e0ad, #178a0a);
+
+}
+.backimage{
+    -fx-background-image: url('5791376.png');
+    -fx-background-size: 140px 58px;
+}
+.title{
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 5);
+}
+.board{
+    -fx-background-color:linear-gradient(to bottom right, #1a6904, #66fd55);
+}
+.board2{
+    -fx-background-color:linear-gradient(to bottom right, #66fd55, #1a6904);
+}

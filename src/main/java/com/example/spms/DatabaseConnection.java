@@ -9,18 +9,18 @@ public class DatabaseConnection {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "";
 
-    private Connection connection;
+    private static Connection connection;
 
-    private void RegisterMyConnection() {
+    private static void RegisterMyConnection() {
         try {
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            System.out.println("Connected to the database.");
-        } catch (SQLException e) {
-            e.printStackTrace();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
+        //System.out.println("Connected to the database.");
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         RegisterMyConnection();
 
         try {
@@ -31,9 +31,9 @@ public class DatabaseConnection {
         return connection;
     }
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
 
         DatabaseConnection my=new DatabaseConnection();
         my.getConnection();
-    }*/
+    }
 }

@@ -36,22 +36,22 @@
             <Font name="Courier New Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="id" layoutX="708.0" layoutY="109.0" prefHeight="26.0" prefWidth="181.0" />
-      <Button layoutX="583.0" layoutY="253.0" mnemonicParsing="false" onAction="#gotoPasswordReset" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" text="Reset">
+      <TextField fx:id="id" layoutX="708.0" layoutY="109.0" prefHeight="26.0" prefWidth="181.0" styleClass="title" />
+      <Button layoutX="561.0" layoutY="253.0" mnemonicParsing="false" onAction="#gotoPasswordReset" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #5eff00;" styleClass="title" text="Foget Password">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="691.0" layoutY="253.0" mnemonicParsing="false" onAction="#clearText" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" text="Clear">
+      <Button layoutX="691.0" layoutY="253.0" mnemonicParsing="false" onAction="#clearText" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" styleClass="title" text="Clear">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="799.0" layoutY="253.0" mnemonicParsing="false" onAction="#gotoMainDashboard" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" text="Login">
+      <Button layoutX="799.0" layoutY="253.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #5eff00;" styleClass="title" text="Login">
          <font>
             <Font name="Courier New Bold" size="12.0" />
          </font>
       </Button>
-      <PasswordField fx:id="pwd" layoutX="708.0" layoutY="171.0" prefHeight="26.0" prefWidth="181.0" />
+      <PasswordField fx:id="pwd" layoutX="708.0" layoutY="171.0" prefHeight="26.0" prefWidth="181.0" styleClass="title" />
    </children>
 </AnchorPane>
