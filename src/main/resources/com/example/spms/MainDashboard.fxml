@@ -39,7 +39,7 @@
             <Font name="Courier New Bold" size="18.0" />
          </font></Button>
       <Label layoutX="28.0" layoutY="115.0" prefHeight="220.0" prefWidth="220.0" />
-      <ImageView fitHeight="220.0" fitWidth="220.0" layoutX="28.0" layoutY="100.0">
+      <ImageView fitHeight="220.0" fitWidth="220.0" layoutX="28.0" layoutY="115.0">
          <image>
             <Image url="@free-user-icon-3297-thumb.png" />
          </image>

@@ -7,14 +7,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class editprofilecontroller implements Initializable {
@@ -33,6 +34,8 @@ public class editprofilecontroller implements Initializable {
     private  String NIC;
 
     private  String emptype;
+
+
 
     @FXML
     private Stage stage;
@@ -88,6 +91,166 @@ public class editprofilecontroller implements Initializable {
 
     @FXML
     private TextField show3;
+
+
+    //this method use edit profile details
+    public void UpdateProfileDetails(ActionEvent event)throws IOException{
+
+        String Newpwd=NewPassword.getText();
+        String ReNewpwd=ReEnterNewPassword.getText();
+
+        if(Newpwd.isEmpty() && ReNewpwd.isEmpty()){
+
+            UserSessionSaved.setNewpassword(CurrentPassword.getText());
+            UserSessionSaved.setEmployee_name(Name.getText());
+            UserSessionSaved.setEmail(Email.getText());
+            UserSessionSaved.setContactNumber(Contact.getText());
+
+            employee_name=UserSessionSaved.getEmployee_name();
+            email=UserSessionSaved.getEmployee_email();
+            contact_number=UserSessionSaved.getEmployee_contact_number();
+            password=UserSessionSaved.getEmployee_password();
+
+            Connection conn= DatabaseConnection.getConnection();
+
+            String sqlupdate = "UPDATE employee SET name=?,email=?,contact_number=?,password=? where employee_id =?";
+            try{
+                PreparedStatement statment= conn.prepareStatement(sqlupdate);
+
+                statment.setString(1,employee_name);
+                statment.setString(2,email);
+                statment.setString(3,contact_number);
+                statment.setString(4,password);
+                statment.setString(5,employee_id);
+
+                int rowsUpdated = statment.executeUpdate();
+                if (rowsUpdated > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText("Look, an Information Dialog");
+                    alert.setContentText("Update Successfully");
+                    alert.showAndWait();
+
+                    backtoDashboard(event);
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Look, an Error Dialog");
+                    alert.setContentText("Update Not SuccessFully");
+                    alert.showAndWait();
+                }
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }finally {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        }else{
+            if(Newpwd.isEmpty() || ReNewpwd.isEmpty()){
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText("Enter New Password and Re Enter New Password");
+                alert.showAndWait();
+                NewPassword.setText("");
+                ReEnterNewPassword.setText("");
+                show2.setText("");
+                show3.setText("");
+
+            } else if (Newpwd.length()>8 || ReNewpwd.length()>8) {
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText("Password Should Contain maximum 8 characters");
+                alert.showAndWait();
+                NewPassword.setText("");
+                ReEnterNewPassword.setText("");
+                show2.setText("");
+                show3.setText("");
+
+            } else if (!(Newpwd.equals(ReNewpwd))) {
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText("New password and Re Enter Password are not matched");
+                alert.showAndWait();
+                NewPassword.setText("");
+                ReEnterNewPassword.setText("");
+                show2.setText("");
+                show3.setText("");
+
+            }else {
+                UserSessionSaved.setEmployee_name(Name.getText());
+                UserSessionSaved.setEmail(Email.getText());
+                UserSessionSaved.setContactNumber(Contact.getText());
+                UserSessionSaved.setNewpassword(ReEnterNewPassword.getText());
+
+                employee_name=UserSessionSaved.getEmployee_name();
+                email=UserSessionSaved.getEmployee_email();
+                contact_number=UserSessionSaved.getEmployee_contact_number();
+                password=UserSessionSaved.getEmployee_password();
+
+                Connection conn= DatabaseConnection.getConnection();
+
+                String sqlupdate = "UPDATE employee SET name=?,email=?,contact_number=?,password=? where employee_id =?";
+                try{
+                    PreparedStatement statment= conn.prepareStatement(sqlupdate);
+
+                    statment.setString(1,employee_name);
+                    statment.setString(2,email);
+                    statment.setString(3,contact_number);
+                    statment.setString(4,password);
+                    statment.setString(5,employee_id);
+
+                    int rowsUpdated = statment.executeUpdate();
+                    if (rowsUpdated > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText("Look, an Information Dialog");
+                        alert.setContentText("Update Successfully");
+                        alert.showAndWait();
+
+                        backtoDashboard(event);
+
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Dialog");
+                        alert.setHeaderText("Look, an Error Dialog");
+                        alert.setContentText("Update Not SuccessFully");
+                        alert.showAndWait();
+                    }
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }finally {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    public void MouseEvent(){
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning Dialog");
+        alert.setHeaderText("Look, a Warning Dialog");
+        alert.setContentText("Channot Change Current Password");
+        alert.showAndWait();
+    }
 
     public void loadUserData(){
 
@@ -175,4 +338,5 @@ public class editprofilecontroller implements Initializable {
         }
 
     }
+
 }

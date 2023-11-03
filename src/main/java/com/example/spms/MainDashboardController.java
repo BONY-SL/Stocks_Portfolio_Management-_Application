@@ -49,6 +49,7 @@ public class MainDashboardController implements Initializable{
 
     @FXML
     private Label name;
+    private Scene SPM_Module;
 
     public void gotoLogin(ActionEvent event) throws IOException {
 
@@ -104,16 +105,26 @@ public class MainDashboardController implements Initializable{
 
     }
 
-    public void gotoUserModule(ActionEvent event)throws IOException{
+
+    //goto stock portpolio manager modules Manage Employee and Manage Customer
+    public void SelectModuleButton(ActionEvent event)throws IOException{
 
         String type=UserSessionSaved.getEmployee_emptype();
 
         if(type.equals("SPM")){
-            ManageEmployee.setDisable(true);
-            ManageStock.setDisable(true);
-            ManageFinancial.setDisable(true);
-            ManageReport.setDisable(true);
+            
         }
+
+
+    }
+
+    public void goto_SPM_Module(ActionEvent event) throws IOException{
+
+        Parent root= FXMLLoader.load(getClass().getResource("SPM.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        SPM_Module=new Scene(root);
+        stage.setScene(SPM_Module);
+
     }
 
     @Override
