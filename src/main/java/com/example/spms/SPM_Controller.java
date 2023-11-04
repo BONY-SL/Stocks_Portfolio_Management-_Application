@@ -1,21 +1,26 @@
 package com.example.spms;
 
+import com.example.spms.Tables.viweTableModeCustomer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class SPM_Controller {
+public class SPM_Controller implements Initializable {
 
     private Stage stage;
 
@@ -108,13 +113,70 @@ public class SPM_Controller {
     @FXML
     private TextField InputType;
 
-    private String CustomerName=null;
-    private String CustomerID=null;
-    private String CustomerEmail=null;
-    private String CustomerShopeName=null;
-    private String CoustomerContactNumber=null;
-    private String Customertype=null;
-    private String CoustomerDOB=null;
+    private String CustomerName;
+    private String CustomerID;
+    private String CustomerEmail;
+    private String CustomerShopeName;
+    private String CoustomerContactNumber;
+    private String Customertype;
+    private String CoustomerDOB;
+
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> CustomerContactColumn;
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> CustomerMailColumn;
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> CustomerNameColumn;
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> CustomerTypeColumn;
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> CustomerdobColumn;
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> ShopNameColumn;
+    @FXML
+    private TableColumn<viweTableModeCustomer,String> customerIDColumn;
+    @FXML
+    private TableView<viweTableModeCustomer> viweCustomerTable;
+
+    ObservableList<viweTableModeCustomer> listview= FXCollections.observableArrayList();
+
+    public void viweCustomerTable(ActionEvent event) throws SQLException,IOException {
+
+
+        customerIDColumn.setCellValueFactory(new PropertyValueFactory<>("CustomerID"));
+        CustomerNameColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        CustomerMailColumn.setCellValueFactory(new PropertyValueFactory<>("customerEmail"));
+        CustomerContactColumn.setCellValueFactory(new PropertyValueFactory<>("coustomerContactNumber"));
+        ShopNameColumn.setCellValueFactory(new PropertyValueFactory<>("customerShopeName"));
+        CustomerTypeColumn.setCellValueFactory(new PropertyValueFactory<>("customertype"));
+        CustomerdobColumn.setCellValueFactory(new PropertyValueFactory<>("coustomerDOB"));
+
+
+
+        Connection conn= DatabaseConnection.getConnection();
+        String view="select * from customer";
+
+        try{
+            Statement sm=conn.createStatement();
+            ResultSet r=sm.executeQuery(view);
+
+            while(r.next()){
+                listview.add(new viweTableModeCustomer(
+                        r.getString("customer_id"),
+                        r.getString("name"),
+                        r.getString("email"),
+                        r.getString("shopname"),
+                        r.getString("contact_number"),
+                        r.getString("type"),
+                        r.getString("date_of_birthday")));
+            }
+            viweCustomerTable.setItems(listview);
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+            conn.close();
+        }
+    }
 
 
     //add Customer to system
@@ -188,6 +250,80 @@ public class SPM_Controller {
         }
 
     }
+
+    //add Supplier to system
+    public void addNewCSupplier(ActionEvent event)throws IOException{
+
+        CustomerName=inputName.getText();
+        CustomerID=inputID.getText();
+        CustomerEmail=inputEmail.getText();
+        CustomerShopeName=inputShopName.getText();
+        CoustomerContactNumber=inputContactNumber.getText();
+        Customertype=InputType.getText();
+        CoustomerDOB=inputdob.getText();
+
+        if(CustomerName.equals("") || CustomerID.equals("") || CustomerEmail.equals("") || CustomerShopeName.equals("") || CoustomerContactNumber.equals("") || Customertype.equals("") || CoustomerDOB.equals("")){
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Should Fill the all fields");
+            alert.showAndWait();
+        }else {
+            Connection conn1= DatabaseConnection.getConnection();
+
+            String insert="INSERT INTO customer(customer_id,name,email,shopname,contact_number,type,date_of_birthday) " +
+                    "VALUES" +
+                    "(?,?,?,?,?,?,?)";
+
+            try (PreparedStatement insertst=conn1.prepareStatement(insert)){
+                insertst.setString(1,CustomerID);
+                insertst.setString(2,CustomerName);
+                insertst.setString(3,CustomerEmail);
+                insertst.setString(4,CustomerShopeName);
+                insertst.setString(5,CoustomerContactNumber);
+                insertst.setString(6,Customertype);
+                insertst.setString(7,CoustomerDOB);
+
+                int rowinsert=insertst.executeUpdate();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Row Insert Successfully");
+                alert.showAndWait();
+
+                inputContactNumber.setText("");
+                inputEmail.setText("");
+                inputID.setText("");
+                inputName.setText("");
+                inputShopName.setText("");
+                inputdob.setText("");
+                InputType.setText("");
+
+            }catch (SQLException ex) {
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText(ex.getMessage());
+
+                alert.showAndWait();
+                throw new RuntimeException(ex);
+
+            } finally {
+                try {
+                    conn1.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+
+        }
+
+    }
+
+
     public void ClearAddDetails(ActionEvent event)throws IOException{
 
         inputContactNumber.setText("");
@@ -251,7 +387,7 @@ public class SPM_Controller {
         updateSupplierDetailsModule.setVisible(false);
         viewSupplierDetailsModule.setVisible(false);
     }
-    public void setviewCustomerAnchorPane(ActionEvent event)throws IOException{
+    public void setviewCustomerAnchorPane(ActionEvent event) throws IOException, SQLException {
 
         addCustomerModule.setVisible(false);
         imageancher.setVisible(false);
@@ -261,6 +397,11 @@ public class SPM_Controller {
         CustomerInvoiceModule.setVisible(false);
         UpdateCustomerModule.setVisible(false);
         ViewCustomerDetailsModule.setVisible(true);
+
+        listview.clear();
+
+        viweCustomerTable(event);
+
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(false);
         viewSupplierDetailsModule.setVisible(false);
@@ -366,4 +507,11 @@ public class SPM_Controller {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        
+
+
+    }
 }

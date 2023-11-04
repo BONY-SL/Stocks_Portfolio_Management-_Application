@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -134,8 +136,23 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="9.0" layoutY="55.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <TableView fx:id="viweCustomerTable" layoutX="4.0" layoutY="6.0" prefHeight="407.0" prefWidth="603.0">
+                    <columns>
+                      <TableColumn fx:id="customerIDColumn" prefWidth="74.0" text="Customer ID" />
+                      <TableColumn fx:id="CustomerNameColumn" prefWidth="87.0" text="Name" />
+                        <TableColumn fx:id="CustomerMailColumn" prefWidth="112.0" text="Email" />
+                        <TableColumn fx:id="ShopNameColumn" prefWidth="92.0" text="Shop Name" />
+                        <TableColumn fx:id="CustomerContactColumn" prefWidth="89.0" text="Contact NUM" />
+                        <TableColumn fx:id="CustomerTypeColumn" prefWidth="67.0" text="Type" />
+                        <TableColumn fx:id="CustomerdobColumn" prefWidth="81.0" text="DOB" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane fx:id="addSupplierModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
+      <AnchorPane fx:id="addSupplierModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;">
          <children>
             <Label alignment="CENTER" layoutX="154.0" layoutY="7.0" prefHeight="38.0" prefWidth="323.0" styleClass="board3" text="Add Supplier" underline="true">
                <font>
@@ -152,6 +169,28 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="10.0" layoutY="57.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="127.0" text="Customer ID:" />
+                  <Label layoutX="14.0" layoutY="59.0" prefHeight="45.0" prefWidth="127.0" text="Name:" />
+                  <Label layoutX="14.0" layoutY="104.0" prefHeight="45.0" prefWidth="127.0" text="Email:" />
+                  <Label layoutX="14.0" layoutY="149.0" prefHeight="45.0" prefWidth="127.0" text="Shope Name:" />
+                  <TextField fx:id="inputID1" layoutX="141.0" layoutY="18.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <TextField fx:id="inputName1" layoutX="141.0" layoutY="63.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <TextField fx:id="inputEmail1" layoutX="141.0" layoutY="108.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <TextField fx:id="inputShopName1" layoutX="141.0" layoutY="153.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <Button layoutX="375.0" layoutY="368.0" mnemonicParsing="false" onAction="#addNewCustomer" prefHeight="38.0" prefWidth="197.0" style="-fx-background-radius: 15; -fx-background-color: #99fc35;" text="Submit">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="43.0" layoutY="368.0" mnemonicParsing="false" onAction="#ClearAddDetails" prefHeight="38.0" prefWidth="197.0" style="-fx-background-radius: 15; -fx-background-color: #99fc35;" text="Clear" textFill="#222222">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <AnchorPane fx:id="DeleteSupplierModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
@@ -243,7 +282,7 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css">
+      <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css" visible="false">
          <children>
             <ImageView fitHeight="473.0" fitWidth="618.0" layoutX="7.0" layoutY="5.0">
                <image>

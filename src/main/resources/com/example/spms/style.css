@@ -55,4 +55,7 @@
     -fx-background-image: url('businessman-doing-multitasking.png');
     -fx-background-size: 200px 200px;
 }
+#textalign{
+    -fx-text-alignment: center;
+}
 
