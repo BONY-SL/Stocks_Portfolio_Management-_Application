@@ -107,14 +107,17 @@ public class MainDashboardController implements Initializable{
 
 
     //goto stock portpolio manager modules Manage Employee and Manage Customer
-    public void SelectModuleButton(ActionEvent event)throws IOException{
+    public void SelectModuleButton(){
 
         String type=UserSessionSaved.getEmployee_emptype();
+        if((type.equals("SPM"))){
 
-        if(type.equals("SPM")){
-            
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Can not Access");
+            alert.showAndWait();
         }
-
 
     }
 

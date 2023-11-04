@@ -8,7 +8,7 @@
 
 }
 .backimage{
-    -fx-background-image: url('5791376.png');
+    -fx-background-image: url('rewind.png');
     -fx-background-size: 140px 58px;
 }
 .title{
@@ -20,3 +20,39 @@
 .board2{
     -fx-background-color:linear-gradient(to bottom right, #66fd55, #1a6904);
 }
+.board3{
+    -fx-background-color:linear-gradient(to bottom right, #66fd55, #1a6904);
+    -fx-font-size: 16;
+    -fx-background-radius: 5;
+    -fx-font-family: "Courier New";
+    -fx-border-width: 2;
+     -fx-font-weight: bold;
+}
+.borderimage{
+    -fx-border-radius: 15;
+}
+#empbutton{
+    -fx-background-image: url('content-moderation.gif');
+    -fx-background-size: 200px 200px;
+}
+#cusbutton{
+    -fx-background-image: url('business-team.gif');
+    -fx-background-size: 200px 200px;
+}
+#supbutton{
+    -fx-background-image: url('supply-chain.png');
+    -fx-background-size: 200px 200px;
+}
+#stocbutton{
+    -fx-background-image: url('woman-shopping-online.gif');
+    -fx-background-size: 200px 200px;
+}
+#finanbutton{
+    -fx-background-image: url('financial-strategy.png');
+    -fx-background-size: 200px 200px;
+}
+#repbutton{
+    -fx-background-image: url('businessman-doing-multitasking.png');
+    -fx-background-size: 200px 200px;
+}
+
