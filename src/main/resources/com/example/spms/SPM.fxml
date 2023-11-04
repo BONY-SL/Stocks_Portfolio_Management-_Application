@@ -152,7 +152,7 @@
                </children>
             </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane fx:id="addSupplierModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+      <AnchorPane fx:id="addSupplierModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="154.0" layoutY="7.0" prefHeight="38.0" prefWidth="323.0" styleClass="board3" text="Add Supplier" underline="true">
                <font>
@@ -171,20 +171,20 @@
             </Button>
             <AnchorPane layoutX="10.0" layoutY="57.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="127.0" text="Customer ID:" />
-                  <Label layoutX="14.0" layoutY="59.0" prefHeight="45.0" prefWidth="127.0" text="Name:" />
-                  <Label layoutX="14.0" layoutY="104.0" prefHeight="45.0" prefWidth="127.0" text="Email:" />
-                  <Label layoutX="14.0" layoutY="149.0" prefHeight="45.0" prefWidth="127.0" text="Shope Name:" />
-                  <TextField fx:id="inputID1" layoutX="141.0" layoutY="18.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
-                  <TextField fx:id="inputName1" layoutX="141.0" layoutY="63.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
-                  <TextField fx:id="inputEmail1" layoutX="141.0" layoutY="108.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
-                  <TextField fx:id="inputShopName1" layoutX="141.0" layoutY="153.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
-                  <Button layoutX="375.0" layoutY="368.0" mnemonicParsing="false" onAction="#addNewCustomer" prefHeight="38.0" prefWidth="197.0" style="-fx-background-radius: 15; -fx-background-color: #99fc35;" text="Submit">
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="127.0" text="Supplier ID:" />
+                  <Label layoutX="14.0" layoutY="59.0" prefHeight="45.0" prefWidth="127.0" text="Company Name" />
+                  <Label layoutX="14.0" layoutY="104.0" prefHeight="45.0" prefWidth="127.0" text="Company Mail" />
+                  <Label layoutX="14.0" layoutY="149.0" prefHeight="45.0" prefWidth="127.0" text="Contact Number" />
+                  <TextField fx:id="inputIDSupplier" layoutX="141.0" layoutY="18.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <TextField fx:id="inputCompanyNameSupplier" layoutX="141.0" layoutY="63.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <TextField fx:id="inputEmailSupplier" layoutX="141.0" layoutY="108.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <TextField fx:id="inputContactNumberSuplier" layoutX="141.0" layoutY="153.0" prefHeight="38.0" prefWidth="372.0" style="-fx-background-radius: 15; -fx-background-color: white;" />
+                  <Button layoutX="375.0" layoutY="368.0" mnemonicParsing="false" onAction="#addNewSupplier" prefHeight="38.0" prefWidth="197.0" style="-fx-background-radius: 15; -fx-background-color: #99fc35;" text="Submit">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="43.0" layoutY="368.0" mnemonicParsing="false" onAction="#ClearAddDetails" prefHeight="38.0" prefWidth="197.0" style="-fx-background-radius: 15; -fx-background-color: #99fc35;" text="Clear" textFill="#222222">
+                  <Button layoutX="43.0" layoutY="368.0" mnemonicParsing="false" onAction="#ClearAddDetailsSupplier" prefHeight="38.0" prefWidth="197.0" style="-fx-background-radius: 15; -fx-background-color: #99fc35;" text="Clear" textFill="#222222">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -245,6 +245,18 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="9.0" layoutY="56.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <TableView fx:id="viweSupplierTable" layoutX="4.0" layoutY="6.0" prefHeight="407.0" prefWidth="603.0">
+                     <columns>
+                        <TableColumn fx:id="SupplierIDColumn" prefWidth="82.0" text="Supplier ID" />
+                        <TableColumn fx:id="CompanyNameColumn" prefWidth="166.0" text="Company Name" />
+                        <TableColumn fx:id="SupplierMailCloumn" prefWidth="252.0" text="Company Mail" />
+                        <TableColumn fx:id="SupplierContactNumerColumn" prefWidth="102.0" text="Contact Number" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <AnchorPane fx:id="CustomerInvoiceModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
@@ -282,7 +294,7 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css" visible="false">
+      <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="473.0" fitWidth="618.0" layoutX="7.0" layoutY="5.0">
                <image>

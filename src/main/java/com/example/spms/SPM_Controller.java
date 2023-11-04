@@ -1,6 +1,7 @@
 package com.example.spms;
 
 import com.example.spms.Tables.viweTableModeCustomer;
+import com.example.spms.Tables.viweTableModeSupplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -138,7 +139,39 @@ public class SPM_Controller implements Initializable {
     @FXML
     private TableView<viweTableModeCustomer> viweCustomerTable;
 
+    @FXML
+    private TableColumn<viweTableModeSupplier,String> CompanyNameColumn;
+    @FXML
+    private TableColumn<viweTableModeSupplier,String> SupplierContactNumerColumn;
+    @FXML
+    private TableColumn<viweTableModeSupplier,String> SupplierIDColumn;
+    @FXML
+    private TableColumn<viweTableModeSupplier,String> SupplierMailCloumn;
+    @FXML
+    private TableView<viweTableModeSupplier> viweSupplierTable;
+
+    ObservableList<viweTableModeSupplier> listview2= FXCollections.observableArrayList();
+
     ObservableList<viweTableModeCustomer> listview= FXCollections.observableArrayList();
+
+    @FXML
+    private TextField inputIDSupplier;
+
+    @FXML
+    private TextField inputCompanyNameSupplier;
+
+    @FXML
+    private TextField inputEmailSupplier;
+
+    @FXML
+    private TextField inputContactNumberSuplier;
+
+    private String SupplierID;
+    private String SupplierCompanyName;
+    private String SupplierCompanyMail;
+    private String SupplierContactNumber;
+
+
 
     public void viweCustomerTable(ActionEvent event) throws SQLException,IOException {
 
@@ -171,6 +204,37 @@ public class SPM_Controller implements Initializable {
                         r.getString("date_of_birthday")));
             }
             viweCustomerTable.setItems(listview);
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }finally {
+            conn.close();
+        }
+    }
+
+    public void viweSupplierTable(ActionEvent event) throws SQLException,IOException {
+
+
+        SupplierIDColumn.setCellValueFactory(new PropertyValueFactory<>("supplierID"));
+        CompanyNameColumn.setCellValueFactory(new PropertyValueFactory<>("supplierCompanyName"));
+        SupplierMailCloumn.setCellValueFactory(new PropertyValueFactory<>("supplierCompanyMail"));
+        SupplierContactNumerColumn.setCellValueFactory(new PropertyValueFactory<>("supplierContactNumber"));
+
+
+        Connection conn= DatabaseConnection.getConnection();
+        String view="select * from supplier";
+
+        try{
+            Statement sm=conn.createStatement();
+            ResultSet r=sm.executeQuery(view);
+
+            while(r.next()){
+                listview2.add(new viweTableModeSupplier(
+                        r.getString("supplier_id"),
+                        r.getString("company_name"),
+                        r.getString("company_mail"),
+                        r.getString("contact_numer")));
+            }
+            viweSupplierTable.setItems(listview2);
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }finally {
@@ -252,17 +316,15 @@ public class SPM_Controller implements Initializable {
     }
 
     //add Supplier to system
-    public void addNewCSupplier(ActionEvent event)throws IOException{
+    public void addNewSupplier(ActionEvent event)throws IOException{
 
-        CustomerName=inputName.getText();
-        CustomerID=inputID.getText();
-        CustomerEmail=inputEmail.getText();
-        CustomerShopeName=inputShopName.getText();
-        CoustomerContactNumber=inputContactNumber.getText();
-        Customertype=InputType.getText();
-        CoustomerDOB=inputdob.getText();
+        SupplierID=inputIDSupplier.getText();
+        SupplierCompanyName=inputCompanyNameSupplier.getText();
+        SupplierCompanyMail=inputEmailSupplier.getText();
+        SupplierContactNumber=inputContactNumberSuplier.getText();
 
-        if(CustomerName.equals("") || CustomerID.equals("") || CustomerEmail.equals("") || CustomerShopeName.equals("") || CoustomerContactNumber.equals("") || Customertype.equals("") || CoustomerDOB.equals("")){
+
+        if(SupplierID.equals("") || SupplierCompanyName.equals("") || SupplierCompanyMail.equals("") || SupplierContactNumber.equals("")){
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
@@ -272,18 +334,15 @@ public class SPM_Controller implements Initializable {
         }else {
             Connection conn1= DatabaseConnection.getConnection();
 
-            String insert="INSERT INTO customer(customer_id,name,email,shopname,contact_number,type,date_of_birthday) " +
+            String insert="INSERT INTO supplier(supplier_id,company_name,company_mail,contact_numer) " +
                     "VALUES" +
-                    "(?,?,?,?,?,?,?)";
+                    "(?,?,?,?)";
 
             try (PreparedStatement insertst=conn1.prepareStatement(insert)){
-                insertst.setString(1,CustomerID);
-                insertst.setString(2,CustomerName);
-                insertst.setString(3,CustomerEmail);
-                insertst.setString(4,CustomerShopeName);
-                insertst.setString(5,CoustomerContactNumber);
-                insertst.setString(6,Customertype);
-                insertst.setString(7,CoustomerDOB);
+                insertst.setString(1,SupplierID);
+                insertst.setString(2,SupplierCompanyName);
+                insertst.setString(3,SupplierCompanyMail);
+                insertst.setString(4,SupplierContactNumber);
 
                 int rowinsert=insertst.executeUpdate();
 
@@ -293,13 +352,10 @@ public class SPM_Controller implements Initializable {
                 alert.setContentText("Row Insert Successfully");
                 alert.showAndWait();
 
-                inputContactNumber.setText("");
-                inputEmail.setText("");
-                inputID.setText("");
-                inputName.setText("");
-                inputShopName.setText("");
-                inputdob.setText("");
-                InputType.setText("");
+                inputIDSupplier.setText("");
+                inputCompanyNameSupplier.setText("");
+                inputEmailSupplier.setText("");
+                inputContactNumberSuplier.setText("");
 
             }catch (SQLException ex) {
 
@@ -321,6 +377,15 @@ public class SPM_Controller implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    void ClearAddDetailsSupplier(ActionEvent event) {
+
+        inputIDSupplier.setText("");
+        inputCompanyNameSupplier.setText("");
+        inputEmailSupplier.setText("");
+        inputContactNumberSuplier.setText("");
     }
 
 
@@ -360,6 +425,7 @@ public class SPM_Controller implements Initializable {
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(false);
         viewSupplierDetailsModule.setVisible(false);
+        CustomerInvoiceModule.setVisible(false);
     }
     public void setDeleteCustomerAnchorPane(ActionEvent event)throws IOException{
 
@@ -373,6 +439,7 @@ public class SPM_Controller implements Initializable {
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(false);
         viewSupplierDetailsModule.setVisible(false);
+        CustomerInvoiceModule.setVisible(false);
     }
     public void setUpdateCustomerAnchorPane(ActionEvent event)throws IOException{
 
@@ -386,6 +453,7 @@ public class SPM_Controller implements Initializable {
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(false);
         viewSupplierDetailsModule.setVisible(false);
+        CustomerInvoiceModule.setVisible(false);
     }
     public void setviewCustomerAnchorPane(ActionEvent event) throws IOException, SQLException {
 
@@ -434,7 +502,7 @@ public class SPM_Controller implements Initializable {
         viewSupplierDetailsModule.setVisible(false);
         CustomerInvoiceModule.setVisible(false);
     }
-    public void setUpdateSupplierAnchorPane(ActionEvent event)throws IOException{
+    public void setUpdateSupplierAnchorPane(ActionEvent event) throws IOException, SQLException {
 
         addCustomerModule.setVisible(false);
         imageancher.setVisible(false);
@@ -446,9 +514,10 @@ public class SPM_Controller implements Initializable {
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(true);
         viewSupplierDetailsModule.setVisible(false);
+
         CustomerInvoiceModule.setVisible(false);
     }
-    public void setviewSupplierAnchorPane(ActionEvent event)throws IOException{
+    public void setviewSupplierAnchorPane(ActionEvent event) throws IOException, SQLException {
 
         addCustomerModule.setVisible(false);
         imageancher.setVisible(false);
@@ -460,6 +529,10 @@ public class SPM_Controller implements Initializable {
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(false);
         viewSupplierDetailsModule.setVisible(true);
+
+        listview2.clear();
+        viweSupplierTable(event);
+
         CustomerInvoiceModule.setVisible(false);
     }
     public void setCustomerInvoiceAnchorPane(ActionEvent event)throws IOException{
@@ -510,7 +583,7 @@ public class SPM_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        
+
 
 
     }
