@@ -178,6 +178,13 @@ public class SPM_Controller implements Initializable {
     @FXML
     private ComboBox<String> SupplierIDComboBox;
 
+    @FXML
+    private ComboBox<String> CustomerIDComboboxUpdate;
+
+    //@FXML
+    //private Button gotoUpdateCustomerClass;
+
+
     public void getSupplierID_forComboBox(ActionEvent event)throws IOException{
         try {
             Connection conn= DatabaseConnection.getConnection();
@@ -348,6 +355,7 @@ public class SPM_Controller implements Initializable {
                 );
 
                 CustomerIDCombobox.setItems(listacombo);
+                CustomerIDComboboxUpdate.setItems(listacombo);
             }
 
         } catch (SQLException ex) {
@@ -634,6 +642,9 @@ public class SPM_Controller implements Initializable {
         DeleteSupplierModule.setVisible(false);
         SupplierInvoiceModule.setVisible(false);
         UpdateCustomerModule.setVisible(true);
+
+        getCustomerID_forComboBox(event);
+
         ViewCustomerDetailsModule.setVisible(false);
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(false);
