@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SPM_Controller implements Initializable {
@@ -171,7 +172,97 @@ public class SPM_Controller implements Initializable {
     private String SupplierCompanyMail;
     private String SupplierContactNumber;
 
+    @FXML
+    private ComboBox<String> CustomerIDCombobox;
 
+    //delete Customer Details
+    public void deletecustomerDetails(ActionEvent event)throws IOException{
+
+        String getid=CustomerIDCombobox.getValue();
+        //System.out.println(getid);
+
+        if(getid==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Select Customer ID");
+            alert.showAndWait();
+        }else {
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Look, a Confirmation Dialog");
+            alert.setContentText("Dou you want Delete "+getid+" "+"Customer");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                //System.out.println(getid);
+                Connection conn= DatabaseConnection.getConnection();
+                String deleterecod="Delete from customer where customer_id=?";
+                try {
+                    int rowsDeleted=0;
+                    PreparedStatement stmt = conn.prepareStatement(deleterecod);
+                    stmt.setString(1, getid);
+                    rowsDeleted = stmt.executeUpdate();
+                    if(rowsDeleted==1){
+
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Information Dialog");
+                        alert2.setHeaderText(null);
+                        alert2.setContentText("Delete Successfully");
+                        alert2.showAndWait();
+
+                    }else if(rowsDeleted==0){
+                        Alert alert3 = new Alert(Alert.AlertType.INFORMATION);
+                        alert3.setTitle("Information Dialog");
+                        alert3.setHeaderText(null);
+                        alert3.setContentText("Delete Not Successfully");
+                        
+                        alert3.showAndWait();
+                    }
+                } catch (SQLException ex) {
+
+                    Alert alert4 = new Alert(Alert.AlertType.WARNING);
+                    alert4.setTitle("Warning Dialog");
+                    alert4.setHeaderText("Look, a Warning Dialog");
+                    alert4.setContentText(ex.getMessage());
+                    alert4.showAndWait();
+
+                    throw new RuntimeException(ex);
+                }finally {
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
+        }
+    }
+
+
+    //get customer id to Customer Combo box
+    public void getCustomerID_forComboBox(ActionEvent event)throws IOException{
+        try {
+            Connection conn= DatabaseConnection.getConnection();
+            ObservableList<String> listacombo= FXCollections.observableArrayList();
+
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT customer_id  FROM customer;");
+            while (rs.next()) {
+                //get string from db,whichever way
+                listacombo.add(
+                        rs.getString("customer_id")
+                );
+
+                CustomerIDCombobox.setItems(listacombo);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+    }
 
     public void viweCustomerTable(ActionEvent event) throws SQLException,IOException {
 
@@ -432,6 +523,9 @@ public class SPM_Controller implements Initializable {
         addCustomerModule.setVisible(false);
         imageancher.setVisible(false);
         DeleteCustomerModule.setVisible(true);
+
+        getCustomerID_forComboBox(event);
+
         DeleteSupplierModule.setVisible(false);
         SupplierInvoiceModule.setVisible(false);
         UpdateCustomerModule.setVisible(false);
