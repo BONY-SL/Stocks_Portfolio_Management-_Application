@@ -151,7 +151,7 @@
                         <Image url="@update-system-6114765-50595.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="367.0" layoutY="11.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="187.0" style="-fx-background-radius: 15;" text="Search">
+                  <Button layoutX="367.0" layoutY="11.0" mnemonicParsing="false" onAction="#getCustomerData" prefHeight="38.0" prefWidth="187.0" style="-fx-background-radius: 15;" text="Search">
                      <styleClass>
                         <String fx:value="board2" />
                         <String fx:value="title" />
@@ -172,23 +172,23 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="250.0" prefHeight="45.0" prefWidth="154.0" text="Contact Number :">
+                  <Label layoutX="14.0" layoutY="301.0" prefHeight="45.0" prefWidth="154.0" text="Contact Number :">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="300.0" prefHeight="45.0" prefWidth="106.0" text="Type :">
+                  <Label layoutX="14.0" layoutY="254.0" prefHeight="45.0" prefWidth="106.0" text="Type :">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="195.0" layoutY="104.0" prefHeight="38.0" prefWidth="295.0" />
-                  <TextField layoutX="195.0" layoutY="154.0" prefHeight="38.0" prefWidth="295.0" />
-                  <TextField layoutX="195.0" layoutY="204.0" prefHeight="38.0" prefWidth="295.0" />
-                  <TextField layoutX="195.0" layoutY="254.0" prefHeight="38.0" prefWidth="295.0" />
-                  <TextField layoutX="195.0" layoutY="304.0" prefHeight="38.0" prefWidth="295.0" />
-                  <Button layoutX="342.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15;" text="Update" />
-                  <Button layoutX="139.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15; -fx-background-color: #fa3c3c;" text="Clear" />
+                  <TextField fx:id="getUpdateCustomerName" layoutX="195.0" layoutY="104.0" prefHeight="38.0" prefWidth="295.0" />
+                  <TextField fx:id="getUpdateCustomerMail" layoutX="195.0" layoutY="154.0" prefHeight="38.0" prefWidth="295.0" />
+                  <TextField fx:id="getUpdateCustomerShopeName" layoutX="195.0" layoutY="204.0" prefHeight="38.0" prefWidth="295.0" />
+                  <TextField fx:id="getUpdateCustomerType" layoutX="195.0" layoutY="254.0" prefHeight="38.0" prefWidth="295.0" />
+                  <TextField fx:id="getUpdateCustomerNumber" layoutX="195.0" layoutY="304.0" prefHeight="38.0" prefWidth="295.0" />
+                  <Button layoutX="342.0" layoutY="368.0" mnemonicParsing="false" onAction="#updateCustomerData" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15; -fx-background-color: #2688eb;" styleClass="title" text="Update" />
+                  <Button layoutX="139.0" layoutY="368.0" mnemonicParsing="false" onAction="#setUpdateCustomerDataClear" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15; -fx-background-color: #fa3c3c;" styleClass="title" text="Clear" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
@@ -365,7 +365,7 @@
                   <TextField layoutX="195.0" layoutY="204.0" prefHeight="38.0" prefWidth="295.0" />
                   <TextField layoutX="195.0" layoutY="254.0" prefHeight="38.0" prefWidth="295.0" />
                   <TextField layoutX="195.0" layoutY="304.0" prefHeight="38.0" prefWidth="295.0" />
-                  <Button layoutX="342.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15;" text="Update" />
+                  <Button layoutX="342.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15; -fx-background-color: #2688eb;" text="Update" />
                   <Button layoutX="139.0" layoutY="368.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15; -fx-background-color: #fa3c3c;" text="Clear" />
                </children>
             </AnchorPane>

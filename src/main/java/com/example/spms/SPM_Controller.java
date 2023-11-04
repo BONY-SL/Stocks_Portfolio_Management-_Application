@@ -2,6 +2,7 @@ package com.example.spms;
 
 import com.example.spms.Tables.viweTableModeCustomer;
 import com.example.spms.Tables.viweTableModeSupplier;
+import com.example.spms.Validate.MailValidate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -181,8 +182,171 @@ public class SPM_Controller implements Initializable {
     @FXML
     private ComboBox<String> CustomerIDComboboxUpdate;
 
-    //@FXML
-    //private Button gotoUpdateCustomerClass;
+    @FXML
+    private TextField getUpdateCustomerMail;
+
+    @FXML
+    private TextField getUpdateCustomerName;
+
+    @FXML
+    private TextField getUpdateCustomerShopeName;
+
+    @FXML
+    private TextField getUpdateCustomerType;
+
+    @FXML
+    private TextField getUpdateCustomerNumber;
+
+    private String UpdateCus_Name;
+    private String UpdateCus_Mail;
+    private String UpdateCus_shop;
+    private String UpdateCus_contact;
+    private String UpdateCus_type;
+
+    private String updatetoIDCustomer;
+
+    @FXML
+    void getCustomerData(ActionEvent event) {
+
+        updatetoIDCustomer=CustomerIDComboboxUpdate.getValue();
+
+        if(updatetoIDCustomer==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please Select Customer ID");
+            alert.showAndWait();
+        }else {
+            String getdata="select name,email,shopname,contact_number,type from customer where customer_id=?";
+
+            Connection conn= DatabaseConnection.getConnection();
+
+
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(getdata);
+                preparedStatement.setString(1,updatetoIDCustomer);
+
+                ResultSet re = preparedStatement.executeQuery();
+
+                if(re.next()){
+                    UpdateCus_Name=re.getString(1);
+                    UpdateCus_Mail=re.getString(2);
+                    UpdateCus_shop=re.getString(3);
+                    UpdateCus_contact=re.getString(4);
+                    UpdateCus_type=re.getString(5);
+
+                    getUpdateCustomerName.setText(UpdateCus_Name);
+                    getUpdateCustomerMail.setText(UpdateCus_Mail);
+                    getUpdateCustomerShopeName.setText(UpdateCus_shop);
+                    getUpdateCustomerNumber.setText(UpdateCus_contact);
+                    getUpdateCustomerType.setText(UpdateCus_type);
+                }
+
+
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+    @FXML
+    void updateCustomerData(ActionEvent event) {
+
+        if(updatetoIDCustomer==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please Search Customer Details");
+            alert.showAndWait();
+        }else {
+
+            UpdateCus_Name=getUpdateCustomerName.getText();
+            UpdateCus_Mail=getUpdateCustomerMail.getText();
+            UpdateCus_shop=getUpdateCustomerShopeName.getText();
+            UpdateCus_contact=getUpdateCustomerNumber.getText();
+            UpdateCus_type=getUpdateCustomerType.getText();
+
+            if(UpdateCus_Name.isEmpty() || UpdateCus_Mail.isEmpty() || UpdateCus_shop.isEmpty() || UpdateCus_contact.isEmpty() || UpdateCus_type.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning Dialog");
+                alert.setHeaderText("Look, a Warning Dialog");
+                alert.setContentText("Fill all Fields");
+                alert.showAndWait();
+
+            } else if (!MailValidate.isValidEmail(UpdateCus_Mail)) {
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning Dialog");
+                alert.setHeaderText("Look, a Warning Dialog");
+                alert.setContentText("Please Enter Valid Mail Address");
+                alert.showAndWait();
+            }else {
+                //System.out.println(UpdateCus_Mail);
+
+                Connection conn= DatabaseConnection.getConnection();
+
+                String sqlupdate = "UPDATE customer SET name=?,email=?,shopname=?,contact_number=?,type=? where customer_id=?";
+                try{
+                    PreparedStatement statment= conn.prepareStatement(sqlupdate);
+
+                    statment.setString(1,UpdateCus_Name);
+                    statment.setString(2,UpdateCus_Mail);
+                    statment.setString(3,UpdateCus_shop);
+                    statment.setString(4,UpdateCus_contact);
+                    statment.setString(5,UpdateCus_type);
+                    statment.setString(6,updatetoIDCustomer);
+
+                    int rowsUpdated = statment.executeUpdate();
+                    if (rowsUpdated > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText("Look, an Information Dialog");
+                        alert.setContentText("Update Successfully");
+                        alert.showAndWait();
+                        
+                        getUpdateCustomerName.setText("");
+                        getUpdateCustomerMail.setText("");
+                        getUpdateCustomerShopeName.setText("");
+                        getUpdateCustomerNumber.setText("");
+                        getUpdateCustomerType.setText("");
+                        CustomerIDComboboxUpdate.setValue(null);
+
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Dialog");
+                        alert.setHeaderText("Look, an Error Dialog");
+                        alert.setContentText("Update Not SuccessFully");
+                        alert.showAndWait();
+                    }
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }finally {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    void setUpdateCustomerDataClear(ActionEvent event) {
+
+        getUpdateCustomerName.setText("");
+        getUpdateCustomerMail.setText("");
+        getUpdateCustomerShopeName.setText("");
+        getUpdateCustomerNumber.setText("");
+        getUpdateCustomerType.setText("");
+        CustomerIDComboboxUpdate.setValue(null);
+    }
 
 
     public void getSupplierID_forComboBox(ActionEvent event)throws IOException{
