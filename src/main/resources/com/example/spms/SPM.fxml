@@ -234,6 +234,27 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="9.0" layoutY="55.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <ComboBox fx:id="SupplierIDComboBox" layoutX="82.0" layoutY="11.0" prefHeight="38.0" prefWidth="260.0" />
+                  <Button layoutX="102.0" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Cancel">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="379.0" layoutY="376.0" mnemonicParsing="false" onAction="#deleteSuppllierDetails" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Delete">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="246.0" fitWidth="243.0" layoutX="185.0" layoutY="87.0">
+                     <image>
+                        <Image url="@delete-profile.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="394.0" layoutY="11.0" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15;" styleClass="board" text="Search Supllier ID" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <AnchorPane fx:id="updateSupplierDetailsModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
