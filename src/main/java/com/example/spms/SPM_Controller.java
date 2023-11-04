@@ -216,7 +216,7 @@ public class SPM_Controller implements Initializable {
                         alert3.setTitle("Information Dialog");
                         alert3.setHeaderText(null);
                         alert3.setContentText("Delete Not Successfully");
-                        
+
                         alert3.showAndWait();
                     }
                 } catch (SQLException ex) {
@@ -672,13 +672,8 @@ public class SPM_Controller implements Initializable {
         viewSupplierDetailsModule.setVisible(false);
         CustomerInvoiceModule.setVisible(false);
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
 
     }
 }
