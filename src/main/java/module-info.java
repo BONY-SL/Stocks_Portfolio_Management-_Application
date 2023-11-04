@@ -10,4 +10,6 @@ module com.example.spms {
 
     opens com.example.spms to javafx.fxml;
     exports com.example.spms;
+    exports com.example.spms.Tables;
+    opens com.example.spms.Tables to javafx.fxml;
 }

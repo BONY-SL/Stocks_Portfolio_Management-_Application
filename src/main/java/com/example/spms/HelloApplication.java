@@ -14,6 +14,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 900, 550);
         stage.setTitle("SPMS");
         stage.setScene(scene);
+        stage.setX(200);
+        stage.setY(100);
         stage.setResizable(false);
         stage.show();
     }

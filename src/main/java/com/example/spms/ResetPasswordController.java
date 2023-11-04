@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,6 +34,46 @@ public class ResetPasswordController {
     private TextField newpassword;
     @FXML
     private TextField reEnterNewpassword;
+
+    @FXML
+    private CheckBox showNew;
+
+    @FXML
+    private CheckBox showReNew;
+    @FXML
+    private PasswordField passwordNew;
+
+    @FXML
+    private PasswordField passwordReNew;
+
+    public void showNewPassword(ActionEvent event)throws IOException{
+
+        if(showNew.isSelected()){
+            newpassword.setText(passwordNew.getText());
+            newpassword.setVisible(true);
+            passwordNew.setVisible(false);
+            return;
+        }else{
+            passwordNew.setText(newpassword.getText());
+            passwordNew.setVisible(true);
+            newpassword.setVisible(false);
+        }
+
+    }
+    public void showReEnterNewPassword(ActionEvent event)throws IOException{
+
+        if(showReNew.isSelected()){
+            reEnterNewpassword.setText(passwordReNew.getText());
+            reEnterNewpassword.setVisible(true);
+            passwordReNew.setVisible(false);
+            return;
+        }else{
+            passwordReNew.setText(reEnterNewpassword.getText());
+            passwordReNew.setVisible(true);
+            reEnterNewpassword.setVisible(false);
+        }
+
+    }
 
 
 
