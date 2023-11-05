@@ -117,8 +117,6 @@ public class HelloController {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         MainDashBoardSean=new Scene(root);
         stage.setScene(MainDashBoardSean);
-
-
     }
 
     public void clearText(){

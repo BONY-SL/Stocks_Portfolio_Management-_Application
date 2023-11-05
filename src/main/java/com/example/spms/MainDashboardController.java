@@ -50,6 +50,26 @@ public class MainDashboardController implements Initializable{
     @FXML
     private Label name;
 
+    public void gotoECM_1(ActionEvent event)throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ECM.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 800, 680);
+        Stage stage = (Stage) ManageFinancial.getScene().getWindow();
+        stage.setTitle("SPMS");
+        stage.setScene(scene);
+        stage.setResizable(false);
+    }
+
+    public void gotoECM_2(ActionEvent event)throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ECM.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 800, 680);
+        Stage stage = (Stage) ManageReport.getScene().getWindow();
+        stage.setTitle("SPMS");
+        stage.setScene(scene);
+        stage.setResizable(false);
+    }
+
     public void gotoLogin(ActionEvent event) throws IOException {
 
 
