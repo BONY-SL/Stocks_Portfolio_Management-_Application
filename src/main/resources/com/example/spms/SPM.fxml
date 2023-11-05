@@ -61,7 +61,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -107,7 +107,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -150,7 +150,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -226,7 +226,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -263,7 +263,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -303,7 +303,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -346,7 +346,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -412,7 +412,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -446,7 +446,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onDragDetected="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -481,7 +481,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -502,16 +502,16 @@
          </children></AnchorPane>
       <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css">
          <children>
-            <ImageView fitHeight="473.0" fitWidth="618.0" layoutX="7.0" layoutY="5.0">
-               <image>
-                  <Image url="@933ba1db896a20796e49f704fdf.jpg" />
-               </image>
-            </ImageView>
-            <Button layoutX="557.0" layoutY="5.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
+            <Button layoutX="557.0" layoutY="5.0" mnemonicParsing="false" onAction="#showCountSupplierandCustomer" prefHeight="38.0" prefWidth="68.0" style="-fx-background-radius: 15; -fx-background-color: #00eeff;" styleClass="title" text="Refresh" textFill="#222222">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <ImageView fitHeight="474.0" fitWidth="619.0" layoutX="5.0" layoutY="6.0">
+               <image>
+                  <Image url="@624d66c7da82bf387ae9afe2_Re.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <Button layoutX="57.0" layoutY="474.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="54.0" prefWidth="146.0" style="-fx-background-radius: 15;">
          <styleClass>
@@ -520,12 +520,12 @@
             <String fx:value="title" />
          </styleClass>
       </Button>
-      <BarChart layoutX="-9.0" layoutY="137.0" prefHeight="334.0" prefWidth="260.0">
+      <BarChart fx:id="barchart" alternativeColumnFillVisible="true" barGap="2.0" layoutY="137.0" prefHeight="334.0" prefWidth="260.0">
         <xAxis>
-          <CategoryAxis label="Categeroies" side="BOTTOM" />
+          <CategoryAxis label="Categeroies" side="BOTTOM" fx:id="x" />
         </xAxis>
         <yAxis>
-          <NumberAxis label="Count" side="LEFT" />
+          <NumberAxis fx:id="y" label="Count" side="LEFT" />
         </yAxis>
       </BarChart>
    </children>

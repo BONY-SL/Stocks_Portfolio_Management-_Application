@@ -12,6 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -1117,8 +1121,122 @@ public class SPM_Controller implements Initializable {
         viewSupplierDetailsModule.setVisible(false);
         CustomerInvoiceModule.setVisible(false);
     }
+
+    @FXML
+    private CategoryAxis x;
+
+    @FXML
+    private NumberAxis y;
+
+    @FXML
+    private BarChart<String,Number> barchart;
+
+
+    public void showCountSupplierandCustomer(ActionEvent event) throws IOException, SQLException {
+
+        Connection conn= DatabaseConnection.getConnection();
+        Statement statement1 = null;
+        Statement statement2 = null;
+        ResultSet resultSet1 = null;
+        ResultSet resultSet2 = null;
+
+        barchart.getData().clear();
+
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+
+        int count1=0;
+        int count2=0;
+        try {
+
+            statement1 = conn.createStatement();
+            statement2 = conn.createStatement();
+
+            series1.setName("customer");
+            resultSet1 = statement1.executeQuery("SELECT COUNT(*) FROM customer");
+            while (resultSet1.next()) {
+                count1 = resultSet1.getInt(1);
+            }
+            series1.getData().add(new XYChart.Data<>("", count1));
+
+            //System.out.println(count1);
+
+
+
+            series2.setName("supplier");
+            resultSet2 = statement2.executeQuery("SELECT COUNT(*) FROM supplier");
+            while (resultSet2.next()) {
+                count2 = resultSet2.getInt(1);
+
+            }
+            series2.getData().add(new XYChart.Data<>("", count2));
+
+            //System.out.println(count2);
+
+            barchart.getData().addAll(series1,series2);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            conn.close();
+        }
+
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        Connection conn= DatabaseConnection.getConnection();
+        Statement statement1 = null;
+        Statement statement2 = null;
+        ResultSet resultSet1 = null;
+        ResultSet resultSet2 = null;
+
+        barchart.getData().clear();
+
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+
+        int count1=0;
+        int count2=0;
+        try {
+
+            statement1 = conn.createStatement();
+            statement2 = conn.createStatement();
+
+            series1.setName("customer");
+            resultSet1 = statement1.executeQuery("SELECT COUNT(*) FROM customer");
+            while (resultSet1.next()) {
+                count1 = resultSet1.getInt(1);
+            }
+            series1.getData().add(new XYChart.Data<>("", count1));
+
+            //System.out.println(count1);
+
+
+
+            series2.setName("supplier");
+            resultSet2 = statement2.executeQuery("SELECT COUNT(*) FROM supplier");
+            while (resultSet2.next()) {
+                count2 = resultSet2.getInt(1);
+
+            }
+            series2.getData().add(new XYChart.Data<>("", count2));
+
+            //System.out.println(count2);
+
+            barchart.getData().addAll(series1,series2);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
