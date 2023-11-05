@@ -18,6 +18,21 @@ public final class UserSessionSaved {
 
     private static UserSessionSaved instance;
 
+    public static void setEmployee_name(String name){
+        employee_name=name;
+    }
+    public static void setEmail(String mail){
+        email=mail;
+    }
+    public static void setContactNumber(String contact){
+        contact_number=contact;
+    }
+    public static void setNewpassword(String getpassword){
+
+        password=getpassword;
+
+    }
+
     private UserSessionSaved(String empid, String pwd) {
 
         this.employee_id=empid;
