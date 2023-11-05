@@ -107,12 +107,7 @@
             <AnchorPane layoutX="9.0" layoutY="57.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
                <children>
                   <ComboBox fx:id="CustomerIDCombobox" layoutX="82.0" layoutY="11.0" prefHeight="38.0" prefWidth="260.0" />
-                  <Button layoutX="102.0" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Cancel">
-                     <font>
-                        <Font name="Courier New Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="379.0" layoutY="376.0" mnemonicParsing="false" onAction="#deletecustomerDetails" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Delete">
+                  <Button layoutX="82.0" layoutY="376.0" mnemonicParsing="false" onAction="#deletecustomerDetails" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Cancel">
                      <font>
                         <Font name="Courier New Bold" size="12.0" />
                      </font>
@@ -123,6 +118,11 @@
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="394.0" layoutY="11.0" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15;" styleClass="board" text="Search Customer ID" />
+                  <Button layoutX="394.0" layoutY="376.0" mnemonicParsing="false" onAction="#deletecustomerDetails" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Delete">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children></AnchorPane>
@@ -143,6 +143,41 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="9.0" layoutY="56.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <ComboBox fx:id="CustomerIDComboboxUpdate" layoutX="82.0" layoutY="11.0" prefHeight="38.0" prefWidth="260.0" />
+                  <Button layoutX="102.0" layoutY="382.0" mnemonicParsing="false" onAction="#setUpdateCustomerDataClear" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Clear">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="379.0" layoutY="382.0" mnemonicParsing="false" onAction="#updateCustomerData" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Update">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="325.0" fitWidth="517.0" layoutX="48.0" layoutY="57.0" opacity="0.25">
+                     <image>
+                        <Image url="@update-system-6114765-50595.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="379.0" layoutY="11.0" mnemonicParsing="false" onAction="#getCustomerData" prefHeight="38.0" prefWidth="167.0" style="-fx-background-radius: 15;" styleClass="board" text="Search ID">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="6.0" layoutY="82.0" prefHeight="38.0" prefWidth="146.0" text="Name" />
+                  <TextField fx:id="getUpdateCustomerMail" layoutX="217.0" layoutY="129.0" prefHeight="38.0" prefWidth="251.0" />
+                  <TextField fx:id="getUpdateCustomerName" layoutX="217.0" layoutY="82.0" prefHeight="38.0" prefWidth="251.0" />
+                  <TextField fx:id="getUpdateCustomerNumber" layoutX="217.0" layoutY="229.0" prefHeight="38.0" prefWidth="251.0" />
+                  <TextField fx:id="getUpdateCustomerShopeName" layoutX="217.0" layoutY="181.0" prefHeight="38.0" prefWidth="251.0" />
+                  <Label layoutX="6.0" layoutY="129.0" prefHeight="38.0" prefWidth="146.0" text="Email" />
+                  <Label layoutX="6.0" layoutY="181.0" prefHeight="38.0" prefWidth="146.0" text="Shope Name" />
+                  <Label layoutX="6.0" layoutY="229.0" prefHeight="38.0" prefWidth="146.0" text="Contact Number" />
+                  <Label layoutX="6.0" layoutY="279.0" prefHeight="38.0" prefWidth="146.0" text="Type" />
+                  <TextField fx:id="getUpdateCustomerType" layoutX="217.0" layoutY="279.0" prefHeight="38.0" prefWidth="251.0" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <AnchorPane fx:id="ViewCustomerDetailsModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
@@ -234,8 +269,29 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="14.0" layoutY="49.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <ComboBox fx:id="SupplierIDComboBox" layoutX="82.0" layoutY="11.0" prefHeight="38.0" prefWidth="260.0" />
+                  <Button layoutX="379.0" layoutY="376.0" mnemonicParsing="false" onAction="#deleteSuppllierDetails" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Delete">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="246.0" fitWidth="243.0" layoutX="185.0" layoutY="87.0">
+                     <image>
+                        <Image url="@delete-profile.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="394.0" layoutY="11.0" prefHeight="38.0" prefWidth="146.0" style="-fx-background-radius: 15;" styleClass="board" text="Search Customer ID" />
+                  <Button layoutX="82.0" layoutY="376.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Cancel">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane fx:id="updateSupplierDetailsModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+      <AnchorPane fx:id="updateSupplierDetailsModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="154.0" layoutY="7.0" prefHeight="38.0" prefWidth="323.0" styleClass="board3" text="Update Supplier Details" underline="true">
                <font>
@@ -252,6 +308,39 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <AnchorPane layoutX="9.0" layoutY="56.0" prefHeight="420.0" prefWidth="612.0" style="-fx-background-radius: 15; -fx-background-color: #7df57f;">
+               <children>
+                  <ComboBox layoutX="82.0" layoutY="11.0" prefHeight="38.0" prefWidth="260.0" />
+                  <Button layoutX="102.0" layoutY="382.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Clear">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="379.0" layoutY="382.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-radius: 15;" styleClass="board" text="Update">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="325.0" fitWidth="517.0" layoutX="48.0" layoutY="57.0" opacity="0.25">
+                     <image>
+                        <Image url="@update-system-6114765-50595.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="379.0" layoutY="11.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="167.0" style="-fx-background-radius: 15;" styleClass="board" text="Search ID">
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="6.0" layoutY="91.0" prefHeight="38.0" prefWidth="146.0" text="Name" />
+                  <TextField layoutX="217.0" layoutY="129.0" prefHeight="38.0" prefWidth="251.0" />
+                  <TextField layoutX="217.0" layoutY="82.0" prefHeight="38.0" prefWidth="251.0" />
+                  <TextField layoutX="217.0" layoutY="229.0" prefHeight="38.0" prefWidth="251.0" />
+                  <TextField layoutX="217.0" layoutY="181.0" prefHeight="38.0" prefWidth="251.0" />
+                  <Label layoutX="6.0" layoutY="143.0" prefHeight="38.0" prefWidth="146.0" text="Company Name" />
+                  <Label layoutX="9.0" layoutY="191.0" prefHeight="38.0" prefWidth="146.0" text="Mail" />
+                  <Label layoutX="9.0" layoutY="240.0" prefHeight="38.0" prefWidth="146.0" text="Contact Number" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <AnchorPane fx:id="viewSupplierDetailsModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
          <children>
@@ -319,7 +408,7 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css" visible="false">
+      <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="473.0" fitWidth="618.0" layoutX="7.0" layoutY="5.0">
                <image>
