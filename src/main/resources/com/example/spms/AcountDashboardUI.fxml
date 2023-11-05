@@ -61,7 +61,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <AnchorPane fx:id="CtCusRe" layoutX="204.0" layoutY="-1.0" prefHeight="525.0" prefWidth="618.0" style="-fx-background-color: white;">
+        <AnchorPane fx:id="CtCusRe" layoutX="204.0" layoutY="-1.0" prefHeight="525.0" prefWidth="618.0" style="-fx-background-color: white;" visible="false">
             <children>
                 <Label layoutX="191.0" layoutY="28.0" prefHeight="47.0" prefWidth="344.0" text="Create custom report" textFill="#1d1d1d">
                     <font>
@@ -73,7 +73,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="182.0" layoutY="128.0" prefHeight="25.0" prefWidth="201.0" />
+            <TextField editable="false" layoutX="182.0" layoutY="128.0" prefHeight="25.0" prefWidth="201.0" />
             <Button layoutX="462.0" layoutY="125.0" mnemonicParsing="false" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-width: 2; -fx-border-radius: 2;" text="VIEW">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -272,7 +272,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="UpdteSupDet" layoutX="224.0" prefHeight="522.0" prefWidth="596.0" style="-fx-background-color: white;" visible="false">
+        <AnchorPane fx:id="UpdteSupDet" layoutX="224.0" prefHeight="522.0" prefWidth="596.0" style="-fx-background-color: white;">
             <children>
                 <Label layoutX="128.0" layoutY="14.0" prefHeight="40.0" prefWidth="409.0" text="Update Supplier Details" textFill="#1f1e1e">
                     <font>
@@ -284,7 +284,7 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <TextField fx:id="usdid" disable="true" layoutX="189.0" layoutY="109.0" prefHeight="25.0" prefWidth="201.0" />
+                <TextField fx:id="usdid" layoutX="189.0" layoutY="109.0" prefHeight="25.0" prefWidth="201.0" />
                 <Button fx:id="supplyupdatebtn" layoutX="110.0" layoutY="457.0" mnemonicParsing="false" onAction="#supplydetailupdate" prefHeight="19.0" prefWidth="75.0" style="-fx-background-color: #A2F6F4; -fx-border-color: #48EEEA; -fx-border-radius: 2; -fx-border-width: 2;" text="UPDATE">
                     <font>
                         <Font name="System Bold" size="12.0" />
@@ -320,10 +320,10 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <TextField fx:id="usdid2" disable="true" layoutX="189.0" layoutY="184.0" prefHeight="25.0" prefWidth="201.0" />
-                <TextField fx:id="usdcn" disable="true" layoutX="189.0" layoutY="237.0" prefHeight="25.0" prefWidth="201.0" />
-                <TextField fx:id="usdcm" disable="true" layoutX="189.0" layoutY="286.0" prefHeight="25.0" prefWidth="201.0" />
-                <TextField fx:id="usdcNO" disable="true" layoutX="189.0" layoutY="343.0" prefHeight="25.0" prefWidth="201.0" />
+                <TextField fx:id="usdid2" layoutX="189.0" layoutY="184.0" prefHeight="25.0" prefWidth="201.0" />
+                <TextField fx:id="usdcn" layoutX="189.0" layoutY="237.0" prefHeight="25.0" prefWidth="201.0" />
+                <TextField fx:id="usdcm" layoutX="189.0" layoutY="286.0" prefHeight="25.0" prefWidth="201.0" />
+                <TextField fx:id="usdcNO" layoutX="189.0" layoutY="343.0" prefHeight="25.0" prefWidth="201.0" />
             </children>
         </AnchorPane>
       <ImageView fitHeight="438.0" fitWidth="607.0" layoutX="200.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" visible="false">

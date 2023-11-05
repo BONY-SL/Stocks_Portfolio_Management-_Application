@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AcountDashboardController implements Initializable{
+public class AcountDashboardController implements Initializable {
 
     @FXML
     private AnchorPane All;
@@ -382,89 +382,36 @@ public class AcountDashboardController implements Initializable{
 
     @FXML
     public void supplydetailupdate(ActionEvent event) {
-        SuppID = usdid.getText();
-
-
-        if (SuppID == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText("Look, an Error Dialog");
-            alert.setContentText("Please Search Customer Details");
-            alert.showAndWait();
-        } else {
-
+        try {
+            SuppID=usdid.getText();
             SuppComName = usdcn.getText();
             SuppComMail = usdcm.getText();
             SuppConNumber = usdcNO.getText();
-        }
-        if (SuppComName.isEmpty() || SuppComMail.isEmpty() || SuppConNumber.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning Dialog");
-            alert.setHeaderText("Look, a Warning Dialog");
-            alert.setContentText("Fill all Fields");
-            alert.showAndWait();
-
-        } else if (!MailValidate.isValidEmail(SuppComMail)) {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning Dialog");
-            alert.setHeaderText("Look, a Warning Dialog");
-            alert.setContentText("Please Enter Valid Mail Address");
-            alert.showAndWait();
-        } else {
-            //System.out.println(UpdateCus_Mail);
 
             Connection conn = DatabaseConnection.getConnection();
 
             String sqlupdate = "UPDATE supplier SET company_name=?,company_mail=?,contact_numer=? where supplier_id =?";
-            try {
-                PreparedStatement statment = conn.prepareStatement(sqlupdate);
 
-                statment.setString(1, SuppID);
-                statment.setString(2, SuppComName);
-                statment.setString(3, SuppComMail);
-                statment.setString(4, SuppConNumber);
+            PreparedStatement statment = conn.prepareStatement(sqlupdate);
+
+            statment.setString(1, SuppComName);
+            statment.setString(2, SuppComMail);
+            statment.setString(3, SuppConNumber);
+            statment.setString(4, SuppID);
 
 
-                int rowsUpdated = statment.executeUpdate();
-                if (rowsUpdated > 0) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText("Look, an Information Dialog");
-                    alert.setContentText("Update Successfully");
-                    alert.showAndWait();
+            int rowsUpdated = statment.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+        @Override
+        public void initialize (URL url, ResourceBundle resourceBundle){
 
-                    usdid.setText(" ");
-                    usdid2.setText(" ");
-                    usdcn.setText(" ");
-                    usdcm.setText(" ");
-                    usdcNO.setText(" ");
-
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Dialog");
-                    alert.setHeaderText("Look, an Error Dialog");
-                    alert.setContentText("Update Not SuccessFully");
-                    alert.showAndWait();
-                }
-
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            } finally {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-   }
+        }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-}
 
 
 
