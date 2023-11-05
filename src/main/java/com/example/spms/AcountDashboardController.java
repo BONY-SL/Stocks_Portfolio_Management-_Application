@@ -1,12 +1,22 @@
 package com.example.spms;
 
+import com.example.spms.Validate.MailValidate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class AcountDashboardController {
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class AcountDashboardController implements Initializable{
 
     @FXML
     private AnchorPane All;
@@ -78,19 +88,83 @@ public class AcountDashboardController {
     private TextField usdcn;
 
     @FXML
+    private TextField usdid;
+
+    @FXML
+    private TextField usdid2;
+
+    @FXML
+    private TextField saleamount;
+
+    @FXML
+    private TextField saledate;
+
+    @FXML
+    private TextField saleid;
+
+    @FXML
+    private TextField cusid;
+
+    @FXML
+    private TextField salequantity;
+
+    @FXML
+    private Button salesresetbtn;
+    @FXML
     private Button usdreset;
 
     @FXML
     private Button usdsearch;
 
-    @FXML
-    private TextField usdsid;
 
     @FXML
-    private Button usdupdate;
+    private Button supplyupdatebtn;
+    @FXML
+    private Button backid;
+
+
+    @FXML
+    private TextField itemid;
+
+    @FXML
+    private TextField supplyamount;
+
+    @FXML
+    private TextField supplydate;
+
+    @FXML
+    private TextField supplyid;
+
+    @FXML
+    private TextField supplyquantity;
+
+    @FXML
+    private Button supplyreset;
+    @FXML
+    private TextField incomedate;
+
+    @FXML
+    private TextField incomedescription;
+
+    @FXML
+    private TextField incomeamount;
+
+    @FXML
+    private TextField incomeid;
+
+    @FXML
+    private Button incomeresetbtn;
+
+    private String SuppID;
+    private String SuppID2;
+    private String SuppComName;
+    private String SuppComMail;
+    private String SuppConNumber;
 
     @FXML
     public void ButtonClicked(ActionEvent event) {
+
+
         if (event.getSource() == CrAcRe) {
             CreateAccRe.setVisible(true);
             CtCusRe.setVisible(false);
@@ -218,5 +292,181 @@ public class AcountDashboardController {
             }
         }
 
+        {
+            if (event.getSource() == backid) {
+                CreateAccRe.setVisible(false);
+
+            }
+        }
+
+    }
+
+    @FXML
+    public void reset(ActionEvent event) {
+
+        usdid.setText(" ");
+        usdid2.setText(" ");
+        usdcn.setText(" ");
+        usdcm.setText(" ");
+        usdcNO.setText(" ");
+    }
+
+
+    @FXML
+    public void search(ActionEvent event) {
+        SuppID = usdid.getText();
+        if (SuppID == " ") {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please Select Customer ID");
+            alert.showAndWait();
+        } else {
+            String getdata = "SELECT * FROM supplier where supplier_id=?";
+
+            Connection conn = DatabaseConnection.getConnection();
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(getdata);
+                preparedStatement.setString(1, SuppID);
+
+                ResultSet re = preparedStatement.executeQuery();
+
+                if (re.next()) {
+                    SuppID2 = re.getString(1);
+                    SuppComName = re.getString(2);
+                    SuppComMail = re.getString(3);
+                    SuppConNumber = re.getString(4);
+
+                    usdid2.setText(SuppID);
+                    usdcn.setText(SuppComName);
+                    usdcm.setText(SuppComMail);
+                    usdcNO.setText(SuppConNumber);
+
+                }
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @FXML
+    void supplyreset(ActionEvent event) {
+        itemid.setText(" ");
+        supplyamount.setText("");
+        supplyid.setText("");
+        supplydate.setText("");
+        supplyquantity.setText("");
+
+    }
+
+    @FXML
+    void incomereset(ActionEvent event) {
+        incomeid.setText(" ");
+        incomedescription.setText(" ");
+        incomedate.setText(" ");
+        incomeamount.setText("");
+
+    }
+
+    @FXML
+    void salesreset(ActionEvent event) {
+        saleid.setText(" ");
+        cusid.setText(" ");
+        saledate.setText(" ");
+        saleamount.setText(" ");
+        salequantity.setText(" ");
+    }
+
+    @FXML
+    public void supplydetailupdate(ActionEvent event) {
+        SuppID = usdid.getText();
+
+
+        if (SuppID == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please Search Customer Details");
+            alert.showAndWait();
+        } else {
+
+            SuppComName = usdcn.getText();
+            SuppComMail = usdcm.getText();
+            SuppConNumber = usdcNO.getText();
+        }
+        if (SuppComName.isEmpty() || SuppComMail.isEmpty() || SuppConNumber.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Fill all Fields");
+            alert.showAndWait();
+
+        } else if (!MailValidate.isValidEmail(SuppComMail)) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Please Enter Valid Mail Address");
+            alert.showAndWait();
+        } else {
+            //System.out.println(UpdateCus_Mail);
+
+            Connection conn = DatabaseConnection.getConnection();
+
+            String sqlupdate = "UPDATE supplier SET company_name=?,company_mail=?,contact_numer=? where supplier_id =?";
+            try {
+                PreparedStatement statment = conn.prepareStatement(sqlupdate);
+
+                statment.setString(1, SuppID);
+                statment.setString(2, SuppComName);
+                statment.setString(3, SuppComMail);
+                statment.setString(4, SuppConNumber);
+
+
+                int rowsUpdated = statment.executeUpdate();
+                if (rowsUpdated > 0) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText("Look, an Information Dialog");
+                    alert.setContentText("Update Successfully");
+                    alert.showAndWait();
+
+                    usdid.setText(" ");
+                    usdid2.setText(" ");
+                    usdcn.setText(" ");
+                    usdcm.setText(" ");
+                    usdcNO.setText(" ");
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Look, an Error Dialog");
+                    alert.setContentText("Update Not SuccessFully");
+                    alert.showAndWait();
+                }
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            } finally {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+   }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
+
+
+
+
+

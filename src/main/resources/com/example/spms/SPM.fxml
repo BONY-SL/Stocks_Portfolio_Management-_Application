@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" styleClass="opasity" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spms.SPM_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" styleClass="opasity" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spms.SPM_Controller">
    <children>
       <Label prefHeight="54.0" prefWidth="900.0" style="-fx-background-color: #39941e; -fx-alignment: center;" styleClass="title" text="Stocks Portfolio Manager" textAlignment="CENTER">
          <font>
@@ -126,7 +126,7 @@
                </children>
             </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane fx:id="UpdateCustomerModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;" visible="false">
+      <AnchorPane fx:id="UpdateCustomerModule" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-color: white; -fx-background-radius: 15;">
          <children>
             <Label alignment="CENTER" layoutX="154.0" layoutY="7.0" prefHeight="38.0" prefWidth="323.0" styleClass="board3" text="Update Customer Details" underline="true">
                <font>
@@ -410,7 +410,7 @@
          </children></AnchorPane>
       <AnchorPane id="bacimageviwe" fx:id="imageancher" layoutX="263.0" layoutY="62.0" prefHeight="483.0" prefWidth="630.0" style="-fx-background-radius: 15; -fx-background-color: white;" stylesheets="@style.css">
          <children>
-            <ImageView fitHeight="473.0" fitWidth="618.0" layoutX="7.0" layoutY="5.0">
+            <ImageView fitHeight="473.0" fitWidth="618.0" layoutX="289.0" layoutY="5.0">
                <image>
                   <Image url="@933ba1db896a20796e49f704fdf.jpg" />
                </image>
