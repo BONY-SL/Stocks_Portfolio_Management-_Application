@@ -183,6 +183,9 @@ public class SPM_Controller implements Initializable {
     private ComboBox<String> CustomerIDComboboxUpdate;
 
     @FXML
+    private ComboBox<String> SupplierIDComboboxUpdate;
+
+    @FXML
     private TextField getUpdateCustomerMail;
 
     @FXML
@@ -203,7 +206,152 @@ public class SPM_Controller implements Initializable {
     private String UpdateCus_contact;
     private String UpdateCus_type;
 
+    @FXML
+    private TextField getUpdateSupplyMail;
+
+    @FXML
+    private TextField getUpdateSupplyName;
+
+    @FXML
+    private TextField getUpdateSupplyNumber;
+
+    private String Updatesup_Name;
+    private String Updatesup_Mail;
+    private String Updatesup_contact;
+
     private String updatetoIDCustomer;
+    private String updatetoIDSupplier;
+
+    @FXML
+    void getsupplierData(ActionEvent event) {
+
+        updatetoIDSupplier=SupplierIDComboboxUpdate.getValue();
+
+        if(updatetoIDSupplier==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please Select Supplier ID");
+            alert.showAndWait();
+        }else {
+            String getdata="select company_name,company_mail,contact_numer from supplier where supplier_id=?";
+
+            Connection conn= DatabaseConnection.getConnection();
+
+            try {
+                PreparedStatement preparedStatement = conn.prepareStatement(getdata);
+                preparedStatement.setString(1,updatetoIDSupplier);
+
+                ResultSet re = preparedStatement.executeQuery();
+
+                if(re.next()){
+                    Updatesup_Name=re.getString(1);
+                    Updatesup_Mail=re.getString(2);
+                    Updatesup_contact=re.getString(3);
+
+                    getUpdateSupplyName.setText(Updatesup_Name);
+                    getUpdateSupplyMail.setText(Updatesup_Mail);
+                    getUpdateSupplyNumber.setText(Updatesup_contact);
+                }
+
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Look, an Error Dialog");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
+    @FXML
+    void updateSupplierData(ActionEvent event) {
+
+        if(updatetoIDSupplier==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please Search Supplier Details");
+            alert.showAndWait();
+        }else {
+
+            Updatesup_Name=getUpdateSupplyName.getText();
+            Updatesup_Mail=getUpdateSupplyMail.getText();
+            Updatesup_contact=getUpdateSupplyNumber.getText();
+
+
+            if(Updatesup_Name.isEmpty() || Updatesup_Mail.isEmpty() || Updatesup_contact.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning Dialog");
+                alert.setHeaderText("Look, a Warning Dialog");
+                alert.setContentText("Fill all Fields");
+                alert.showAndWait();
+
+            } else if (!MailValidate.isValidEmail(Updatesup_Mail)) {
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning Dialog");
+                alert.setHeaderText("Look, a Warning Dialog");
+                alert.setContentText("Please Enter Valid Mail Address");
+                alert.showAndWait();
+            }else {
+                //System.out.println(UpdateCus_Mail);
+
+                Connection conn= DatabaseConnection.getConnection();
+
+                String sqlupdate = "UPDATE supplier SET company_name=?,company_mail=?,contact_numer=? where supplier_id =?";
+                try{
+                    PreparedStatement statment= conn.prepareStatement(sqlupdate);
+
+                    statment.setString(1,Updatesup_Name);
+                    statment.setString(2,Updatesup_Mail);
+                    statment.setString(3,Updatesup_contact);
+                    statment.setString(4,updatetoIDSupplier);
+
+                    int rowsUpdated = statment.executeUpdate();
+                    if (rowsUpdated > 0) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Dialog");
+                        alert.setHeaderText("Look, an Information Dialog");
+                        alert.setContentText("Update Successfully");
+                        alert.showAndWait();
+
+                        getUpdateSupplyName.setText("");
+                        getUpdateSupplyMail.setText("");
+                        getUpdateSupplyNumber.setText("");
+                        SupplierIDComboboxUpdate.setValue(null);
+
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Dialog");
+                        alert.setHeaderText("Look, an Error Dialog");
+                        alert.setContentText("Update Not SuccessFully");
+                        alert.showAndWait();
+                    }
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }finally {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    void setUpdatesupplierDataClear(ActionEvent event) {
+
+        getUpdateSupplyName.setText("");
+        getUpdateSupplyMail.setText("");
+        getUpdateSupplyNumber.setText("");
+        SupplierIDComboboxUpdate.setValue(null);
+    }
 
     @FXML
     void getCustomerData(ActionEvent event) {
@@ -363,6 +511,7 @@ public class SPM_Controller implements Initializable {
                 );
 
                 SupplierIDComboBox.setItems(listacombo);
+                SupplierIDComboboxUpdate.setItems(listacombo);
             }
 
         } catch (SQLException ex) {
@@ -472,6 +621,7 @@ public class SPM_Controller implements Initializable {
                         alert2.setHeaderText(null);
                         alert2.setContentText("Delete Successfully");
                         alert2.showAndWait();
+                        CustomerIDCombobox.setValue(null);
 
                     }else if(rowsDeleted==0){
                         Alert alert3 = new Alert(Alert.AlertType.INFORMATION);
@@ -503,6 +653,15 @@ public class SPM_Controller implements Initializable {
         }
     }
 
+    @FXML
+    public void clearDeleteComobo(ActionEvent event) throws IOException{
+        CustomerIDCombobox.setValue(null);
+    }
+
+    @FXML
+    public void deleteComboClear(ActionEvent event)throws IOException{
+        SupplierIDComboBox.setValue(null);
+    }
 
     //get customer id to Customer Combo box
     public void getCustomerID_forComboBox(ActionEvent event)throws IOException{
@@ -615,6 +774,13 @@ public class SPM_Controller implements Initializable {
             alert.setHeaderText("Look, an Error Dialog");
             alert.setContentText("Should Fill the all fields");
             alert.showAndWait();
+        }else if (!MailValidate.isValidEmail(CustomerEmail)) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Please Enter Valid Mail Address");
+            alert.showAndWait();
         }else {
             Connection conn1= DatabaseConnection.getConnection();
 
@@ -684,6 +850,13 @@ public class SPM_Controller implements Initializable {
             alert.setTitle("Error Dialog");
             alert.setHeaderText("Look, an Error Dialog");
             alert.setContentText("Should Fill the all fields");
+            alert.showAndWait();
+        }else if (!MailValidate.isValidEmail(SupplierCompanyMail)) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Please Enter Valid Mail Address");
             alert.showAndWait();
         }else {
             Connection conn1= DatabaseConnection.getConnection();
@@ -876,6 +1049,9 @@ public class SPM_Controller implements Initializable {
         ViewCustomerDetailsModule.setVisible(false);
         addSupplierModule.setVisible(false);
         updateSupplierDetailsModule.setVisible(true);
+
+        getSupplierID_forComboBox(event);
+
         viewSupplierDetailsModule.setVisible(false);
 
         CustomerInvoiceModule.setVisible(false);

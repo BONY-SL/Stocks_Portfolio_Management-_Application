@@ -1,5 +1,6 @@
 package com.example.spms;
 
+import com.example.spms.Validate.MailValidate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,7 +98,7 @@ public class editprofilecontroller implements Initializable {
 
         String Newpwd=NewPassword.getText();
         String ReNewpwd=ReEnterNewPassword.getText();
-
+        
         if(Newpwd.isEmpty() && ReNewpwd.isEmpty()){
 
             UserSessionSaved.setNewpassword(CurrentPassword.getText());
@@ -109,6 +110,8 @@ public class editprofilecontroller implements Initializable {
             email=UserSessionSaved.getEmployee_email();
             contact_number=UserSessionSaved.getEmployee_contact_number();
             password=UserSessionSaved.getEmployee_password();
+
+
 
             Connection conn= DatabaseConnection.getConnection();
 
