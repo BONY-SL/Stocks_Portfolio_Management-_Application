@@ -16,7 +16,7 @@
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Button fx:id="CreateCusRe" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#ButtonClicked" prefHeight="34.0" prefWidth="176.0" style="-fx-background-color: #3BF185;" text="Create Customer Report">
+        <Button fx:id="CreateCusRe" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#ButtonClicked" prefHeight="34.0" prefWidth="176.0" style="-fx-background-color: #3BF185;" text="Create Cutomer Report">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
@@ -63,57 +63,63 @@
         </Button>
         <AnchorPane fx:id="CtCusRe" layoutX="204.0" layoutY="-1.0" prefHeight="525.0" prefWidth="618.0" style="-fx-background-color: white;" visible="false">
             <children>
-                <Label layoutX="191.0" layoutY="28.0" prefHeight="47.0" prefWidth="344.0" text="Create custom report" textFill="#1d1d1d">
+                <Label layoutX="191.0" layoutY="28.0" prefHeight="47.0" prefWidth="344.0" text="Create customer Report" textFill="#1d1d1d">
                     <font>
                         <Font name="System Bold Italic" size="31.0" />
                     </font>
                 </Label>
-            <Label layoutX="71.0" layoutY="131.0" text="Customer ID :">
+            <Label layoutX="28.0" layoutY="131.0" text="Customer ID :">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField editable="false" layoutX="182.0" layoutY="128.0" prefHeight="25.0" prefWidth="201.0" />
-            <Button layoutX="462.0" layoutY="125.0" mnemonicParsing="false" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-width: 2; -fx-border-radius: 2;" text="VIEW">
+            <TextField fx:id="CusID" layoutX="133.0" layoutY="128.0" prefHeight="25.0" prefWidth="201.0" />
+            <Button fx:id="ViewCus" layoutX="521.0" layoutY="217.0" mnemonicParsing="false" onAction="#viewcustomer" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-width: 2; -fx-border-radius: 2;" text="VIEW">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="500.0" layoutY="469.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-width: 2; -fx-border-radius: 2;" text="CLAER">
+            <Button fx:id="cusclear" layoutX="500.0" layoutY="469.0" mnemonicParsing="false" onAction="#customerclear" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-width: 2; -fx-border-radius: 2;" text="CLAER">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Label layoutX="80.0" layoutY="240.0" text="Customer Name :">
+            <Label layoutX="80.0" layoutY="236.0" text="Customer Name :">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="82.0" layoutY="354.0" text="Shop Name :">
+            <Label layoutX="91.0" layoutY="290.0" text="Email :">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="92.0" layoutY="300.0" text="Email :">
+            <TextField fx:id="CusName" layoutX="234.0" layoutY="233.0" />
+            <TextField fx:id="CusEmail" layoutX="234.0" layoutY="287.0" />
+            <TextField fx:id="CusContact" layoutX="234.0" layoutY="335.0" />
+            <TextField fx:id="Quantity" layoutX="234.0" layoutY="391.0" />
+            <Label layoutX="93.0" layoutY="338.0" text="Contact NO :">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="234.0" layoutY="237.0" />
-            <TextField layoutX="234.0" layoutY="297.0" />
-            <TextField layoutX="234.0" layoutY="351.0" />
-            <Label layoutX="101.0" layoutY="459.0" text="Type : ">
+            <TextField fx:id="ItemId" layoutX="425.0" layoutY="128.0" />
+            <Label layoutX="363.0" layoutY="131.0" prefHeight="19.0" prefWidth="61.0" text="Item Id:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="234.0" layoutY="456.0" />
-            <Label layoutX="82.0" layoutY="407.0" text="Contact NO :">
+            <Label layoutX="93.0" layoutY="394.0" prefHeight="19.0" prefWidth="61.0" text="Quantity:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="234.0" layoutY="404.0" />
+            <TextField fx:id="ReturnQuantity" layoutX="234.0" layoutY="433.0" />
+            <Label layoutX="93.0" layoutY="436.0" prefHeight="19.0" prefWidth="105.0" text="Return Quantity:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="CtSupRep" layoutX="203.0" prefHeight="522.0" prefWidth="618.0" style="-fx-background-color: white;" visible="false">
@@ -123,90 +129,137 @@
                         <Font name="System Bold Italic" size="28.0" />
                     </font>
                 </Label>
-                <TextField fx:id="itemid" layoutX="223.0" layoutY="117.0" />
-                <Label layoutX="90.0" layoutY="120.0" text="Item ID :">
+                <TextField fx:id="supqunt" layoutX="265.0" layoutY="353.0" />
+                <Label layoutX="99.0" layoutY="245.0" text="Supplier Name :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Button layoutX="92.0" layoutY="465.0" mnemonicParsing="false" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="ADD" />
-                <Label layoutX="90.0" layoutY="169.0" text="Supplier  ID :">
+                <Button fx:id="supview" layoutX="511.0" layoutY="177.0" mnemonicParsing="false" onAction="#viewsupply" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="VIEW">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+                <Label layoutX="31.0" layoutY="117.0" text="Supplier  ID :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="92.0" layoutY="223.0" text="Date :">
+                <Label layoutX="118.0" layoutY="298.0" text="Email :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="90.0" layoutY="275.0" text="Amount :">
+                <Label layoutX="108.0" layoutY="356.0" text="Quantity :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="90.0" layoutY="327.0" text="Quantity :">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="supplyid" layoutX="223.0" layoutY="166.0" />
-                <TextField fx:id="supplydate" layoutX="223.0" layoutY="220.0" />
-                <TextField fx:id="supplyamount" layoutX="223.0" layoutY="272.0" />
-                <TextField fx:id="supplyquantity" layoutX="223.0" layoutY="324.0" />
-                <Button layoutX="265.0" layoutY="464.0" mnemonicParsing="false" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="OK" />
-                <Button fx:id="supplyreset" layoutX="482.0" layoutY="465.0" mnemonicParsing="false" onAction="#supplyreset" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-radius: 2; -fx-border-width: 2;" text="RESET" />
+                <TextField fx:id="supid" layoutX="148.0" layoutY="114.0" prefHeight="25.0" prefWidth="125.0" />
+                <TextField fx:id="supname" layoutX="265.0" layoutY="242.0" />
+                <TextField fx:id="supmail" layoutX="265.0" layoutY="295.0" />
+                <TextField fx:id="supitemid" layoutX="386.0" layoutY="114.0" />
+                <Button fx:id="supplyreset" layoutX="510.0" layoutY="449.0" mnemonicParsing="false" onAction="#supplyreportreset" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-radius: 2; -fx-border-width: 2;" text="RESET" />
+            <Label layoutX="302.0" layoutY="117.0" text="Item ID :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="111.0" layoutY="403.0" text="Return Quantity :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="supretuenqunt" layoutX="265.0" layoutY="400.0" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="CtSalRe" layoutX="196.0" prefHeight="522.0" prefWidth="624.0" style="-fx-background-color: white;" visible="false">
             <children>
-                <Label layoutX="178.0" layoutY="23.0" prefHeight="47.0" prefWidth="344.0" text="Create sales report">
+                <Label layoutX="178.0" layoutY="23.0" prefHeight="47.0" prefWidth="344.0" text="Item sales report">
                     <font>
                         <Font name="System Bold Italic" size="32.0" />
                     </font>
                 </Label>
-                <Button layoutX="89.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="ADD" />
-                <Label layoutX="79.0" layoutY="139.0" text="Item ID :">
+                <Button fx:id="salesreport" layoutX="500.0" layoutY="186.0" mnemonicParsing="false" onAction="#viewsales" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="VIEW" />
+                <Label layoutX="36.0" layoutY="139.0" text="Item ID :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <TextField fx:id="saleid" layoutX="178.0" layoutY="136.0" />
-                <Label layoutX="79.0" layoutY="194.0" text="Customer  ID :">
+                <TextField fx:id="salereportid" layoutX="109.0" layoutY="136.0" />
+                <Label layoutX="300.0" layoutY="139.0" text="Customer  ID :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="79.0" layoutY="251.0" text="Date :">
+                <Label layoutX="80.0" layoutY="248.0" text="Iteme Name :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="79.0" layoutY="314.0" text="Amount :">
+                <Label layoutX="76.0" layoutY="313.0" text="Sale Quantity :">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <Label layoutX="79.0" layoutY="374.0" text="Quantity :">
-                    <font>
-                        <Font name="System Bold" size="13.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="cusid" layoutX="178.0" layoutY="191.0" />
-                <TextField fx:id="saledate" layoutX="178.0" layoutY="248.0" />
-                <TextField fx:id="saleamount" layoutX="178.0" layoutY="311.0" />
-                <TextField fx:id="salequantity" layoutX="178.0" layoutY="371.0" />
-                <Button layoutX="282.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="OK" />
-                <Button fx:id="salesresetbtn" layoutX="530.0" layoutY="457.0" mnemonicParsing="false" onAction="#salesreset" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-radius: 2; -fx-border-width: 2;" text="RESET" />
+                <TextField fx:id="salecusit" layoutX="419.0" layoutY="136.0" />
+                <TextField fx:id="saleitemname" layoutX="214.0" layoutY="245.0" />
+                <TextField fx:id="salequnt" layoutX="214.0" layoutY="310.0" />
+                <TextField fx:id="salereturnquantity" layoutX="214.0" layoutY="374.0" />
+                <Button fx:id="salesresetbtn" layoutX="530.0" layoutY="457.0" mnemonicParsing="false" onAction="#salesreportreset" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-radius: 2; -fx-border-width: 2;" text="RESET" />
+            <Label layoutX="62.0" layoutY="377.0" text="Sale return  Quantity :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="ItmSupRe" layoutX="204.0" layoutY="2.0" prefHeight="512.0" prefWidth="595.0" style="-fx-background-color: Orange;" visible="false">
+        <AnchorPane fx:id="ItmSupRe" layoutX="204.0" layoutY="-3.0" prefHeight="531.0" prefWidth="619.0" style="-fx-background-color: white;">
             <children>
-                <Label layoutX="118.0" layoutY="151.0" prefHeight="47.0" prefWidth="344.0" text="Item Supply report" textFill="#ff1111">
+                <Label layoutX="131.0" layoutY="23.0" prefHeight="47.0" prefWidth="344.0" text="Item Supply report" textFill="#242323">
                     <font>
-                        <Font size="32.0" />
+                        <Font name="System Bold Italic" size="32.0" />
                     </font>
                 </Label>
+            <Button fx:id="suprereset" layoutX="528.0" layoutY="461.0" mnemonicParsing="false" onAction="#resetsupplyreport" style="-fx-background-color: #EC6962; -fx-border-color: #E3261D; -fx-border-radius: 2; -fx-border-width: 2;" text="RESET">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="41.0" layoutY="133.0" text="Item ID : ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="supplyreid" layoutX="112.0" layoutY="130.0" />
+            <TextField fx:id="suppresupid" layoutX="431.0" layoutY="130.0" />
+            <Label layoutX="310.0" layoutY="133.0" text="Supplier ID :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="256.0" text="Item Name  : ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="supreretunqunt" layoutX="247.0" layoutY="424.0" />
+            <TextField fx:id="supretitmqunt" layoutX="247.0" layoutY="340.0" />
+            <TextField fx:id="supreitemname" layoutX="247.0" layoutY="253.0" />
+            <Label layoutX="54.0" layoutY="427.0" text="Purchase Return Quantity : ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="343.0" text="Pirchase Quantity :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="viewsupre" layoutX="517.0" layoutY="192.0" mnemonicParsing="false" onAction="#viewsupplyreport" style="-fx-background-color: #95F3DF; -fx-border-color: #18F0E1; -fx-border-radius: 2; -fx-border-width: 2;" text="VIEW">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="ManageExpences" layoutX="205.0" layoutY="7.0" prefHeight="512.0" prefWidth="596.0" style="-fx-background-color: grey;" visible="false">
@@ -272,7 +325,7 @@
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="UpdteSupDet" layoutX="224.0" prefHeight="522.0" prefWidth="596.0" style="-fx-background-color: white;">
+        <AnchorPane fx:id="UpdteSupDet" layoutX="224.0" prefHeight="522.0" prefWidth="596.0" style="-fx-background-color: white;" visible="false">
             <children>
                 <Label layoutX="128.0" layoutY="14.0" prefHeight="40.0" prefWidth="409.0" text="Update Supplier Details" textFill="#1f1e1e">
                     <font>
