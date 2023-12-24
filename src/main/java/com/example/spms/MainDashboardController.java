@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -50,6 +51,7 @@ public class MainDashboardController implements Initializable{
     @FXML
     private Label name;
     private Scene SPM_Module;
+    private Scene SK_Module;
 
     public void gotoLogin(ActionEvent event) throws IOException {
 
@@ -107,16 +109,25 @@ public class MainDashboardController implements Initializable{
 
 
     //goto stock portpolio manager modules Manage Employee and Manage Customer
+    //goto stock portpolio manager modules Manage Employee and Manage Customer
     public void SelectModuleButton(){
 
         String type=UserSessionSaved.getEmployee_emptype();
-        if((type.equals("SPM"))){
+        System.out.println(type);
+        if(type.equals("SPM")){
 
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning Dialog");
-            alert.setHeaderText("Look, a Warning Dialog");
-            alert.setContentText("Can not Access");
-            alert.showAndWait();
+            ManageEmployee.setDisable(true);
+            ManageStock.setDisable(true);
+            ManageFinancial.setDisable(true);
+            ManageReport.setDisable(true);
+
+        }else if(type.equals("SK")){
+
+            ManageEmployee.setDisable(true);
+            ManageFinancial.setDisable(true);
+            ManageReport.setDisable(true);
+            ManageCustomer.setDisable(true);
+            ManageSupplier.setDisable(true);
         }
 
     }
@@ -129,9 +140,18 @@ public class MainDashboardController implements Initializable{
         stage.setScene(SPM_Module);
 
     }
+    public void goto_SK_Module(ActionEvent event) throws IOException{
+
+        Parent root= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SK.fxml")));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        SK_Module=new Scene(root);
+        stage.setScene(SK_Module);
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setName_Type();
+        SelectModuleButton();
     }
 }
