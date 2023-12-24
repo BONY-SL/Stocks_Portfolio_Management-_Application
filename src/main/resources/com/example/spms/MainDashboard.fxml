@@ -14,7 +14,7 @@
             <Font name="Courier New Bold" size="41.0" />
          </font>
       </Label>
-      <Button id="empbutton" fx:id="ManageEmployee" alignment="TOP_CENTER" layoutX="275.0" layoutY="115.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Employee">
+      <Button id="empbutton" fx:id="ManageEmployee" alignment="TOP_CENTER" layoutX="275.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#SelectModuleButton" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Employee">
          <font>
             <Font name="Courier New Bold" size="18.0" />
          </font></Button>
@@ -22,15 +22,15 @@
          <font>
             <Font name="Courier New Bold" size="18.0" />
          </font></Button>
-      <Button id="repbutton" fx:id="ManageReport" alignment="TOP_CENTER" layoutX="692.0" layoutY="325.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Report">
+      <Button id="repbutton" fx:id="ManageReport" alignment="TOP_CENTER" layoutX="692.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#SelectModuleButton" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Report">
          <font>
             <Font name="Courier New Bold" size="18.0" />
          </font></Button>
-      <Button id="finanbutton" fx:id="ManageFinancial" alignment="TOP_CENTER" layoutX="485.0" layoutY="325.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Financial">
+      <Button id="finanbutton" fx:id="ManageFinancial" alignment="TOP_CENTER" layoutX="485.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#SelectModuleButton" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Financial">
          <font>
             <Font name="Courier New Bold" size="18.0" />
          </font></Button>
-      <Button id="stocbutton" fx:id="ManageStock" alignment="TOP_CENTER" layoutX="275.0" layoutY="325.0" mnemonicParsing="false" onAction="#goto_SK_Module" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Stock">
+      <Button id="stocbutton" fx:id="ManageStock" alignment="TOP_CENTER" layoutX="275.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#SelectModuleButton" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15; -fx-background-color: #73a580;" styleClass="title" text="Manage Stock">
          <font>
             <Font name="Courier New Bold" size="18.0" />
          </font></Button>
